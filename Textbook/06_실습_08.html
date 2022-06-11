@@ -6,15 +6,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>실습5</title>
+    <title>Document</title>
   </head>
   <body>
+    <h1>eval()로 수식 계산</h1>
+    <hr />
     <script>
-      // while ((pw != "you")) {
-      
-      prompt("암호를 입력해주십시오");
-      // }
-      document.write("통과~!");
+      numero = prompt("수식 입력");
+      document.write(`${numero} = ${eval(numero)}`);
     </script>
   </body>
 </html>
