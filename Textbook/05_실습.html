@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>실습</title>
     <style>
+      hr {
+        margin: 2px;
+      }
       .s01 div {
         border: 2px green solid;
         display: inline-block;
@@ -23,6 +26,31 @@
         width: 100%;
         background: purple;
       }
+      .s03 {
+        width: 350px;
+      }
+      .s03 ol {
+        list-style: decimal-leading-zero;
+      }
+      .s03 li {
+        margin: 5px 0;
+      }
+      .s03 input {
+        float: right;
+      }
+      .s03 input:hover {
+        color: magenta;
+      }
+      .s04 ul {
+        list-style: square;
+        background: aliceblue;
+        padding-right: 10px;
+        background: url("worldmap.png") center/cover no-repeat;
+        width: 500px;
+      }
+      .s04 li:hover {
+        background: yellowgreen;
+      }
     </style>
   </head>
   <body>
@@ -37,6 +65,37 @@
       <article>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut, in.</article>
       <article>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut, in.</article>
       <p>공연은 없어유</p>
+      <hr />
+    </section>
+    <section class="s03">
+      <h1>오디오 재생 리스트</h1>
+      <hr />
+      <ol>
+        <li>애국가 <input type="button" value="재생" /><input type="button" value="중지" /></li>
+        <li>포켓몬스터 오프닝 <input type="button" value="재생" /><input type="button" value="중지" /></li>
+        <li>전국노래자랑 <input type="button" value="재생" /><input type="button" value="중지" /></li>
+      </ol>
+      <hr />
+    </section>
+    <section class="s04">
+      <h1>가보고 싶은 나라</h1>
+      <hr />
+      <ul>
+        <li>엘살바도르</li>
+        <li>스리랑카</li>
+        <li>콩고민주공화국</li>
+        <li>키르기스스탄</li>
+      </ul>
+      <hr />
+    </section>
+    <section class="s05">
+      <h1>헬로키티</h1>
+      <hr />
+      <div><img src="kitty.jpg" width="200" alt="" /></div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, esse ipsum. Quidem molestiae, eius dolorem commodi itaque facilis impedit minima eos cupiditate rem tenetur vitae quae
+        exercitationem rerum. Itaque, repellat!
+      </p>
     </section>
   </body>
 </html>
