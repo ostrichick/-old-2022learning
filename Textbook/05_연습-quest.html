@@ -19,14 +19,22 @@
         }
       }
       .s01 {
-        height: 250px;
+        height: 500px;
         overflow: hidden;
       }
       .s01 span {
-        animation: sils 2s;
+        /* animation: sils 2s; */
+        transition: font-size 2s;
       }
       .s01 img {
-        animation: sils 3s;
+        /* animation: sils 3s; */
+        transition: width 3s;
+      }
+      .s01 span:hover {
+        font-size: 2em;
+      }
+      .s01 img:hover {
+        width: 400px;
       }
       .s02 div img:first-child:hover {
         transform: rotate(180deg);
@@ -36,7 +44,6 @@
       }
       .s02 div img:last-child:hover {
         transform: rotate(90deg) scale(1, 3);
-        ;
       }
     </style>
   </head>
