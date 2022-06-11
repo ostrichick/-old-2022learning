@@ -28,20 +28,29 @@
       .s01 img {
         animation: sils 3s;
       }
-      .s02 img:nth-child(1){}
-      .s02 img:nth-child(2){}
-      .s02 img:nth-child(3){}
+      .s02 div img:first-child:hover {
+        transform: rotate(180deg);
+      }
+      .s02 div img:nth-child(2):hover {
+        transform: skewY(-20deg);
+      }
+      .s02 div img:last-child:hover {
+        transform: rotate(90deg) scale(1, 3);
+        ;
+      }
     </style>
   </head>
   <body>
     <section class="s01">Lorem ipsum <span> dolor </span>sit amet.<br /><br /><img src="kitty.jpg" width="200px" alt="" /></section>
     <hr />
-    <section class="02">
+    <section class="s02">
       <h1>마우스를 올려봐요</h1>
       <hr />
-      <img src="gary.webp" width="200" alt="" />
-      <img src="gary.webp" width="200" alt="" />
-      <img src="gary.webp" width="200" alt="" />
+      <div>
+        <img class="img01" src="gary.webp" width="200" alt="" />
+        <img class="img02" src="gary.webp" width="200" alt="" />
+        <img class="img03" src="gary.webp" width="200" alt="" />
+      </div>
     </section>
   </body>
 </html>
