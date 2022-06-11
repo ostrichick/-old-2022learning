@@ -1,0 +1,47 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습</title>
+    <style>
+      @keyframes sils {
+        from {
+          font-size: 1em;
+          width: 200px;
+        }
+        to {
+          font-size: 2em;
+          width: 2em;
+        }
+      }
+      .s01 {
+        height: 250px;
+        overflow: hidden;
+      }
+      .s01 span {
+        animation: sils 2s;
+      }
+      .s01 img {
+        animation: sils 3s;
+      }
+      .s02 img:nth-child(1){}
+      .s02 img:nth-child(2){}
+      .s02 img:nth-child(3){}
+    </style>
+  </head>
+  <body>
+    <section class="s01">Lorem ipsum <span> dolor </span>sit amet.<br /><br /><img src="kitty.jpg" width="200px" alt="" /></section>
+    <hr />
+    <section class="02">
+      <h1>마우스를 올려봐요</h1>
+      <hr />
+      <img src="gary.webp" width="200" alt="" />
+      <img src="gary.webp" width="200" alt="" />
+      <img src="gary.webp" width="200" alt="" />
+    </section>
+  </body>
+</html>
