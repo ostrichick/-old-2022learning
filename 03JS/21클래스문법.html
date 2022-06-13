@@ -47,7 +47,7 @@
           var a = this.width;
           var b = this.height;
           var c = this.getArea();
-        //   return `도형의 너비${this.width} * 높이${this.height} = 넓이${this.getArea()}`;
+          //   return `도형의 너비${this.width} * 높이${this.height} = 넓이${this.getArea()}`;
           return `도형의 너비${a} * 높이${b} = 넓이${c}`;
         }
       }
@@ -55,6 +55,19 @@
       console.log(rec01.width); // = get width()를 호출
       console.log(rec01.height);
       console.log(rec01.getInfo());
+
+      class Triangle extends Rectangle {
+        // Rectangle 클래스를 상속받는 Triangle
+        constructor(w, h) {
+          super(w, h); // 부모 클래스의 생성자
+        }
+        getArea() {
+          // 오버라이딩 : 부모 클래스의 함수를 재정의
+          return (this.width * this.height) / 2;
+        }
+      }
+      let tri = new Triangle(20, 9);
+      console.log(tri.getInfo());
     </script>
   </body>
 </html>
