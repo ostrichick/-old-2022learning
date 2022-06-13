@@ -45,7 +45,7 @@
           document.write(width * height + "<br>");
         };
       }
-      /*프로토타입 
+      /*프로토타입
       속성은 모든 객체가 다른 값을 가지지만 메소드는 모두 같은 값을 갖는다.
       각 객체는 생성할 때마다 객체별로 동일한 함수를 계속 생성한다.
       프로토 타입을 사용하여 생성된 객체가 공통으로 가지는 공간을 만든다
@@ -57,7 +57,7 @@
         var w = this.getWidth();
         var h = this.getHeight();
         var a = this.getArea();
-        return `사각형의 너비: 너비${w} * 높이${h}= 넓이${w * h}`;
+        return `사각형의 너비: 너비${w} * 높이${h} = 넓이${w * h}`;
       };
       // Rectangle.prototype.getWidth = function () {
       //   return this.width;
@@ -80,6 +80,26 @@
       console.log("rec1의 넓이:" + rec01.getArea());
       console.log("rec2의 넓이:" + rec02.getArea());
       console.log(rec01.infoText());
+      console.log(rec02.infoText());
+
+      /* 상속 */
+      function Square() {
+        this.base = Rectangle; // 상속하는 과정. base는 예약이 아님. 아무 단어 사용가능
+        this.base(); // base 객체 생성
+
+        this.setLength = function (qqq) {
+          this.setWidth(qqq);
+          this.setHeight(qqq);
+        };
+      }
+      Square.prototype = Rectangle.prototype; // 렉탱글 프로토타입을 집어넣기
+      // Square.prototype.constructor = Square;
+
+      var sq = new Square();
+
+      sq.setLength(25);
+      console.log(sq.infoText());
+      // sq.infoText(435);
     </script>
   </body>
 </html>
