@@ -14,6 +14,12 @@
         border-radius: 40px;
         width: 400px;
         margin: auto;
+        color: #666;
+      }
+      input {
+        margin: 5px;
+        border-radius: 5px;
+        background: yellow;
       }
     </style>
     <script></script>
@@ -25,9 +31,10 @@
         <!-- fieldset 폼 요소를 그룹화 할 때 -->
         <legend>기본정보</legend>
         <form action="데이터를 전송받을 주소" method="전송방식">
-          <label for="identity">아이디<input type="text" id="identity" /></label><input type="button" value="중복확인" /><br />
-          <label for="passcord">비밀번호<input id="passcord" type="password" /></label><br />
-          <label for="passcord_re">비밀번호확인<input id="passcord_re" type="password" /></label><br />
+          <label for="identity">아이디<input type="text" id="identity" placeholder="아이디" /></label><input type="button" value="중복확인" /><br />
+          <label for="passcord">비밀번호<input id="passcord" type="password" placeholder="비밀번호" /></label><br />
+          <label for="passcord_re">비밀번호확인<input id="passcord_re" type="password" placeholder="비밀번호확인" /></label><br />
+          <input type="email" placeholder="email@email.email" />
           <!-- <input type="submit" /> -->
         </form>
       </fieldset>
@@ -35,8 +42,8 @@
         <legend>추가정보</legend>
         <form action="">
           <p>성별</p>
-          <label><input name="gender" type="radio" />남자</label>
-          <label><input name="gender" type="radio" />여자</label>
+          <label><input name="gender" type="radio" value="1" />남자</label>
+          <label><input name="gender" type="radio" value="2" />여자</label>
           <p>관심분야</p>
           <label><input type="checkbox" />운동</label>
           <label><input type="checkbox" checked />잠자기</label>
