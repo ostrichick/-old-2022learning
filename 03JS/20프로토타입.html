@@ -17,13 +17,13 @@
         this.getArea = function () {
           return this.width * this.height;
         };
-        document.write(this.width * this.height+"<br>");
+        document.write(this.width * this.height + "<br>");
       }
-      var rec01 = new Rectangle(20,10);
-      var rec02 = new Rectangle(8,4);
+      var rec01 = new Rectangle(20, 10);
+      var rec02 = new Rectangle(8, -4); // 마이너스값이 있어도 검증과정이 없이 무조건 대입됨
 
-      console.log("rec1의 넓이:"+rec01.getArea());
-      console.log("rec2의 넓이:"+rec02.getArea());
+      console.log("rec1의 넓이:" + rec01.getArea());
+      console.log("rec2의 넓이:" + rec02.getArea());
     </script>
   </body>
 </html>
