@@ -14,17 +14,17 @@
         */
 
       //생성자함수 선언
-      function Info() {
+      function Info(number) {
         this.a = 10;
         this.b = 5;
-        //this.num = number; // <<-- ???
+        this.num = number; // <<-- ???
         this.sum = function (x, y) {
           return x + y;
         };
       }
 
-      var abc = new Info(11);
-      var abc = new Info(22);
+      var abc = Info(11);
+      var def = new Info(22); //new를 사용해서 생성
 
       console.log(abc.a);
       console.log(def.a);

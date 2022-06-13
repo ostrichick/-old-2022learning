@@ -175,8 +175,13 @@ header #gnb .main_list li:nth-child(6) {
 }
 
 /* ! header end */
-div.floating{position: fixed;top:154px;left:54.5% ;margin-left: 485px;z-index: 9;}
-
+div.floating {
+  position: fixed;
+  top: 154px;
+  left: 54.5%;
+  margin-left: 485px;
+  z-index: 9;
+}
 
 @keyframes visual {
   from {
@@ -762,7 +767,6 @@ footer #info {
   padding-top: 30px;
   color: #999;
 }
-
 
 footer #info .rules li {
   display: inline-block;

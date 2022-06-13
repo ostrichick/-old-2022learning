@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prototype</title>
+  </head>
+  <body>
+    <script>
+      //생성자 함수 생성
+      function Rectangle(w, h) {
+        //  변수 선언
+        this.width = w;
+        this.height = h;
+        // 함수 선언
+        this.getArea = function () {
+          return this.width * this.height;
+        };
+        document.write(this.width * this.height+"<br>");
+      }
+      var rec01 = new Rectangle(20,10);
+      var rec02 = new Rectangle(8,4);
+
+      console.log("rec1의 넓이:"+rec01.getArea());
+      console.log("rec2의 넓이:"+rec02.getArea());
+    </script>
+  </body>
+</html>
