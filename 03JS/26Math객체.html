@@ -10,7 +10,15 @@
     <script>
       // Math : 수학 계산을 하기 위한 객체 p331
       let num = Math.random(); // 난수(0~1사이 실수)를 무작위로 생성
-      document.write(num);
+      document.write(num + "<hr> 무작위<hr>");
+      // 1~45의 랜덤한 수
+      num *= 45;
+      document.write("0 <= n < 45 :<br>" + num + "<br>"); // (0 <= n < 45)
+      num += 1;
+      document.write("1 <= n <= 45 :<br>" + num + "<br>"); // (0 <= n < 45)
+      console.log(num);
+      num = Math.floor(num);
+      console.log(num);
     </script>
   </head>
   <body>
