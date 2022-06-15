@@ -66,7 +66,7 @@
   </head>
   <body>
     <div id="wrap">
-      <div id="day">오늘날자</div>
+      <div id="daytext">오늘날자</div>
       <p id="time">
         시계 자리
         <!-- <span id="h">00</span> : <span id="m">00</span> : <span id="s">00</span> -->
@@ -95,15 +95,15 @@
       var week = ["일", "월", "화", "수", "목", "금", "토"]; //배열
       updateDay();
       function updateDay() {
-        var now = new Date();
-        var yy = zero(now.getFullYear());
-        var mm = zero(now.getMonth());
-        var dd = zero(now.getDate());
-        var yo = now.getDay();
+        var today = new Date();
+        var yy = zero(today.getFullYear());
+        var mm = zero(today.getMonth());
+        var dd = zero(today.getDate());
+        var yo = today.getDay();
         var day = document.getElementById("day");
-        day.innerHTML = `${mm}월 ${dd}일 ${week[yo]}요일`;
+        daytext.innerHTML = `${mm}월 ${dd}일 ${week[yo]}요일`;
       }
-      var yo = now.getDay();
+      var yo = today.getDay();
       setInterval(updateDay, 60000);
     </script>
   </body>
