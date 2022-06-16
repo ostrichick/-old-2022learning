@@ -40,8 +40,11 @@
       lth = numero.length;
       biggest = Math.floor(numero / 10 ** (lth - 1)); // 첫번째 자리 수 구하기
       smallest = numero.substring(numero.length - 1); // 마지막 자리 수 구하기
-      if (biggest == smallest) document.write(`입력한 숫자:${numero}<br>가장 큰 자리 수${biggest}<br>가장 작은 자리 수${smallest}<br>같음`);
-      else document.write(`입력한 숫자:${numero}<br>가장 큰 자리 수${biggest}<br>가장 작은 자리 수${smallest}<br>다름`);
+      if (biggest == smallest) {
+        document.write(`입력한 숫자:${numero}<br>가장 큰 자리 수${biggest}<br>가장 작은 자리 수${smallest}<br>같음`);
+      } else {
+        document.write(`입력한 숫자:${numero}<br>가장 큰 자리 수${biggest}<br>가장 작은 자리 수${smallest}<br>다름`);
+      }
     </script>
   </body>
 </html>
