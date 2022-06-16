@@ -12,7 +12,9 @@
     <style>
       @import url(css/reset.css);
       @import url(css/style.css);
+      @import url(css/fonts.css);
     </style>
+    <script src="js/script.js"></script>
   </head>
   <body>
     <div id="header_wrap">
@@ -22,7 +24,6 @@
             <h1><a href="/">스타벅스 코리아</a></h1>
             <!-- "/" = 루트폴더(최상위폴더), 서버 -->
           </div>
-
           <!-- #logo end -->
           <nav id="util">
             <ul>
@@ -35,9 +36,13 @@
           </nav>
           <!-- #util end -->
           <div class="btn_search">
-            <p>
-              <span><img src="images/icon_magnifier_black.png" alt="" /></span>
-            </p>
+            <a id="dod" class="open" href="#"></a>
+            <form>
+              <p>
+                <input type="text" placeholder="통합검색" />
+                <img src="images/icon_magnifier_black.png" alt="" />
+              </p>
+            </form>
           </div>
           <!-- .btn_search end -->
         </div>
@@ -81,12 +86,12 @@
               </div>
             </li>
             <li>
+              <a href="#">WHAT'S NEW</a>
               <div class="sub">
                 <!-- sub를 <a>텍스트 앞에 넣었을 때 어떻게 되는지-->
                 <div class="sub_menu"></div>
                 <div class="sub_txbg"></div>
               </div>
-              <a href="#">WHAT'S NEW</a>
             </li>
           </ul>
         </nav>
@@ -95,11 +100,11 @@
       <!-- header end -->
     </div>
     <!-- !header end -->
-<div class="floating">
-<p><img src="images/banner2.png" alt=""></p>
-<p><img src="images/banner1.png" alt=""></p>
-</div>
-<!-- floating end -->
+    <div class="floating">
+      <p><img src="images/banner2.png" alt="" /></p>
+      <p><img src="images/banner1.png" alt="" /></p>
+    </div>
+    <!-- floating end -->
     <main>
       <section id="main_visual_wrap">
         <div class="main_visual_inner">
@@ -135,13 +140,15 @@
           </article>
           <article class="right">
             <h3>
-              <a href="#"><span> 스타벅스 프로모션</span><img src="images/btn_prom_down.png" alt="" /></a>
+              <a href="javascript:void(0)"><span> 스타벅스 프로모션</span><img id="updown" src="images/btn_prom_down.png" alt="" /></a>
             </h3>
           </article>
         </div>
         <!-- inner end -->
       </section>
       <!-- notice end -->
+      <section id="main_prom"></section>
+      <!-- !main_prom end -->
       <section id="rewards">
         <div class="inner">
           <div class="rewards_logo">
@@ -306,9 +313,7 @@
           <li><a href="#">신규입점제의</a></li>
           <li><a href="#">사이트 맵</a></li>
         </ul>
-        <address class="contact"><pre>
-            사업자등록번호 : 201-81-21515    주식회사 에스씨케이컴퍼니 대표이사 : 송 데이비드 호섭    TEL : 1522-3232    개인정보 책임자 : 하익성</pre
-          >
+        <address class="contact"><pre>            사업자등록번호 : 201-81-21515    주식회사 에스씨케이컴퍼니 대표이사 : 송 데이비드 호섭    TEL : 1522-3232    개인정보 책임자 : 하익성</pre></address>
         <!-- !!여러칸 띄어쓰는 방법
         1. 엔터티 &nbsp; 사용
         2. <pre> 태그 사용
@@ -331,6 +336,5 @@ pre-line    X      	  O       	O
       </div>
     </footer>
     <!-- footer end -->
-    <script src="js/main.js"></script>
   </body>
 </html>
