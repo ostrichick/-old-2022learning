@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="" />
+    <style>
+      #table {
+        text-align: center;
+        width: 220px;
+        /* height: 300px;  */
+        border: 3px solid #777;
+        background: yellowgreen;
+        font-size: 80px;
+      }
+    </style>
+    <script>
+      //난수 출력
+
+      // 클릭시 스크립트를 실행하고 난수를 생성해서 해당 span안에 집어넣어야함
+      function roll(obj) {
+        obj.innerHTML = Math.floor(Math.random() * 3);
+        console.log(Math.floor(Math.random() * 3));
+        obj.style.background = "red";
+      }
+
+      // 숫자를 체크하고 승패여부 출력
+    </script>
+  </head>
+  <body>
+    <h1>갬블링 게임</h1>
+    각 숫자를 클릭하면 0에서 2 사이의 난수로 바뀝니다. 모두 같은 수가 나오면 승리합니다
+    <hr />
+    <div id="table">
+      <span id="num01" class="num" onclick="roll(this)">0</span>
+      <span id="num02" class="num" onclick="roll(this)">0</span>
+      <span id="num03" class="num" onclick="roll(this)">0</span>
+    </div>
+    <p id="result"></p>
+  </body>
+</html>
