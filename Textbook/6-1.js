@@ -1,7 +1,7 @@
 function over(obj) {
   obj.src = "question.png";
-  obj.style = "background:'yellow'";
+  obj.style.background = "yellow";
 }
 function out(obj) {
-  obj.style = "background:'white'";
+  obj.style.background = "white";
 }

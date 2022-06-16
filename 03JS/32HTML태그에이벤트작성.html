@@ -11,10 +11,22 @@
   </head>
   <body>
     <h1>html태그에 리스너 작성</h1>
-    <p onmouseover="this.style.backgroundColor='orchid'" onmouseout="this.style.backgroundColor='white'">마우스 올리면 orchid 색으로 변경</p>
+    <p onmouseover="this.style.backgroundColor='red'" onmouseout="this.style.backgroundColor='transparent'">마우스 올리면 색 변경</p>
+    <hr />
+
+    <img src="c.jpg" width="400" alt="롤오버이미지" onmouseover="this.src='../01html/html.jpg'" onmouseout="this.src='c.jpg'" />
+    <hr />
+    <a onclick="change(this)">pink</a>
+    <a onclick="change(this)">cyan</a>
+    <a onclick="change(this)">navy</a>
     <script>
       document.body.style.background = "#ffc";
       document.querySelector("h1").style.background = "#cff";
+
+      function change(obj) {
+        var color = obj.innerHTML;
+        document.body.style.background = color;
+      }
     </script>
   </body>
 </html>
