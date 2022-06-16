@@ -34,13 +34,18 @@ window.onload = function () {
   var state_open = false;
   let prom = document.getElementById("main_prom");
   var prom_btn = document.querySelector("#notice .right a");
+  var prom_img = document.querySelector("#notice .right img");
+
   prom_btn.addEventListener("click", function (e) {
     e.preventDefault();
     if (state_open) {
       prom.style.height = "0";
+      //   prom_img.src = "images/btn_prom_down.png";
+      prom_img.style.transform = "rotate(0deg)";
       state_open = false;
     } else {
       prom.style.height = "658px";
+      prom_img.style.transform = "rotate(180deg)";
       state_open = true;
     }
   });

@@ -361,6 +361,7 @@ div.floating {
   border-top: 1px solid #f6f5ef;
   background: #f6f5ef;
   transition: all 0.5s;
+  box-sizing: border-box;
 }
 /* main_prom end! */
 
