@@ -47,6 +47,7 @@ header a:hover {
 }
 header #logo {
   margin: 18px 50px 0 15px;
+  float: left;
 }
 header #logo a {
   width: 100px;
@@ -59,4 +60,30 @@ header #logo a {
 }
 header #logo a:hover {
   background-position: 0 bottom;
+}
+header #gnb li {
+  float: left;
+  margin-top: 8px;
+}
+header #gnb li .sub a {
+  font-size: 10px;
+  line-height: 10px;
+  height: 20px;
+  font-weight: normal;
+}
+header #gnb a {
+  font-weight: bold;
+  width: 70px;
+  padding: 15px;
+}
+header #gnb a::after {
+  content: "";
+  display: block;
+  background: #fff;
+  width: 0;
+  height: 2px;
+  transition: all 0.2s ease-in-out;
+}
+header #gnb a:hover::after {
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */
