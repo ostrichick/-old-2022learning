@@ -1,3 +1,57 @@
+html {
+  font-size: 12px;
+}
 body {
   line-height: 1.6;
+  // 1.6 : 각 영역에 적용된 글자 크기에 비례하여 1.6배
+  // 1.6em : body의 글자 크기(12px)에 비례해 1.6배
+  background: #333;
+}
+h1 {
+  font-size: 20px;
+}
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  /*
+속성값 inherit
+부모 영역의 값을 그대로 상속함
+대부분 텍스트 관련 스타일에서 기본값
+*/
+}
+img {
+  vertical-align: top;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+header {
+  position: fixed;
+  width: 100%;
+  padding: 20px 0;
+  color: #fff;
+  .inner {
+    padding: 0 100px;
+  }
+  a:hover {
+    color: #20bec6;
+  }
+  #logo {
+    margin: 18px 50px 0 15px;
+    a {
+      width: 100px;
+      height: 28px;
+      text-indent: -999px;
+      overflow: hidden;
+      background: url("../images/logo.png") no-repeat;
+      background-size: 100% auto;
+      transition: all 0.2s ease-in-out;
+    }
+    a:hover {
+      background-position: 0 bottom;
+    }
+  }
 }
