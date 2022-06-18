@@ -99,7 +99,7 @@
     img {
       position: absolute;
     }
-    #spadeA {
+    /* #spadeA {
       z-index: -3;
       left: 10px;
       top: 20px;
@@ -118,15 +118,28 @@
       z-index: 7;
       left: 120px;
       top: 50px;
-    }
+    } */
   </style>
   <h3>z-index 프로퍼티</h3>
   <hr />
   <div>
-    <img id="spadeA" src="5장/media/spade-A.png" width="100" height="140" alt="스페이드A" />
-    <img id="spade2" src="5장/media/spade-2.png" width="100" height="140" alt="스페이드2" />
-    <img id="spade3" src="5장/media/spade-3.png" width="100" height="140" alt="스페이드3" />
-    <img id="spade7" src="5장/media/spade-7.png" width="100" height="140" alt="스페이드7" />
+    <img id="spadeA" class="cards" src="media/5장/media/spade-A.png" width="100" height="140" alt="스페이드A" onclick="flip(this)" />
+    <img id="spade2" class="cards" src="media/5장/media/spade-2.png" width="100" height="140" alt="스페이드2" onclick="flip(this)" />
+    <img id="spade3" class="cards" src="media/5장/media/spade-3.png" width="100" height="140" alt="스페이드3" onclick="flip(this)" />
+    <img id="spade7" class="cards" src="media/5장/media/spade-7.png" width="100" height="140" alt="스페이드7" onclick="flip(this)" />
   </div>
-  <script></script>
+  <script>
+    let reset = 0;
+    function flip(obj) {
+      let img = document.querySelectorAll("img");
+      obj.style.zIndex = "-1";
+      reset++;
+      console.log(reset);
+      if (reset == 4)
+        for (i = 0; i < img.length; i++) {
+          img[i].style.zIndex = "0";
+          reset = 0;
+        }
+    }
+  </script>
 </html>
