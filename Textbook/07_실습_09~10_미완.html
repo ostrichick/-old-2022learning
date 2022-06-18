@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습 9, 10</title>
+    <link rel="stylesheet" href="" />
+    <style></style>
+  </head>
+  <body>
+    <h1>book 객체 만들기</h1>
+    <hr />
+    <script>
+      let book = new Object();
+      book.title = "HTML5 - new Object";
+      book.author = "황기태 - new Object";
+      book.price = 20000;
+
+      let book2 = {
+        title: "HTML5 - literal",
+        author: "황기태2 - literal",
+        price: 20002,
+      };
+
+      function Book3(title, author, price) {
+        // this.title = "HTML5 - prototype";
+        // this.author = "황기태 - prototype";
+        // this.price = 20003;
+        this.title = title;
+        this.author = author;
+        this.price = price;
+      }
+      let book3 = new Book3("HTML5 prototype", "황기태 프로토타입", 20003);
+    </script>
+    <script>
+      insertedbook = new Array(3);
+      // for (i = 0; i < 1; i++) {
+      insertedbook = [prompt("콤마(,)로 분리하면서 책제목 저자 가격 순으로 입력")];
+      // }
+    </script>
+  </body>
+</html>
