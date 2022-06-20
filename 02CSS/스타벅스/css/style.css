@@ -569,12 +569,21 @@ border-box; 보더 영역까지 포함하여 최종적 크기 조절 (패딩, �
   /* margin: 0 auto; */
   box-sizing: border-box;
   background: url("../images/indonesia_visual3.png") center no-repeat;
+  opacity: 0;
+  transition: all 0.9s;
 }
 #reserve .bg::before,
 #reserve .bg::after {
   content: "";
   position: absolute;
   /* z-index: 4; */
+  opacity: 0;
+  transition: all 0.9s;
+}
+#reserve.active .bg,
+#reserve.active .bg::before,
+#reserve.active .bg::after {
+  opacity: 1;
 }
 #reserve .bg::before {
   content: url("../images/indonesia_leaf1.png");
@@ -626,12 +635,27 @@ border-box; 보더 영역까지 포함하여 최종적 크기 조절 (패딩, �
 }
 #favorite .txt1 {
   top: 120px;
+  transform: translateX(-500px); /* 애니메이션 */
+  opacity: 0;
+  transition: all 0.8s;
 }
 #favorite .txt2 {
   top: 370px;
+  transform: translateX(-500px);
+  opacity: 0;
+  transition: all 0.9s;
 }
 #favorite .btn {
   top: 570px;
+  /* transform: translateX(-500px); */
+  opacity: 0;
+  transition: all 1s;
+}
+#favorite.active .txt1,
+#favorite.active .txt2,
+#favorite.active .btn {
+  opacity: 1;
+  transform: translateX(0);
 }
 #favorite a {
   color: white;
@@ -672,6 +696,12 @@ border-box; 보더 영역까지 포함하여 최종적 크기 조절 (패딩, �
   position: absolute;
   top: 0;
   right: 67px;
+  opacity: 0.2;
+  transition: all 0.9s ease-out;
+}
+/* ! 애니메이션 */
+#magazine.active .visual {
+  opacity: 1;
 }
 #magazine .btn {
   margin: 33px 0 0 225px;

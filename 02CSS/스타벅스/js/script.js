@@ -54,17 +54,36 @@ window.onload = function () {
 // ! window.onload = function()
 
 window.addEventListener("scroll", function () {
-  var window_h = this.outerHeight;
-  var doc = document.documentElement; // 문서 객체를 만든다
-  var scroll_y = doc.scrollTop; // 위에서부터 떨어진 거리를 측정한다
-  var target = document.querySelector("#bean"); // DOM 객체 생성 (target)
-  var target_y = target.offsetTop; // 위에서 부터 떨어진 거리를 측정
-  console.log(`스크롤 된 위치: ${scroll_y}, 대상의 위치 ${target_y}, 화면 높이: ${window_h}`);
-  if (scroll_y > target_y) {
-    target.classList.add("active"); // target이라는 DOM(#bean)에 #active 클래스 추가
-    // console.log("클래스 추가 완료");
-  } else {
-    target.classList.remove("active"); // 클래스 제거
-    // console.log("클래스 제거 완료");
-  }
+  scrollToGiveClass("#bean");
+  scrollToGiveClass("#reserve");
+  scrollToGiveClass("#favorite");
+  scrollToGiveClass("#magazine");
+  scrollToGiveClass("#store");
+  // var window_h = this.outerHeight;
+  // var doc = document.documentElement; // 문서 객체를 만든다
+  // var scroll_y = doc.scrollTop; // 위에서부터 떨어진 거리를 측정한다
+  // var target = document.querySelector("#bean"); // DOM 객체 생성 (target)
+  // var target_y = target.offsetTop; // 위에서 부터 떨어진 거리를 측정
+  // console.log(`스크롤 된 위치: ${scroll_y}, 대상의 위치 ${target_y}, 화면 높이: ${window_h}`);
+  // if (scroll_y + window_h / 2 > target_y) {
+  //   target.classList.add("active"); // target이라는 DOM(#bean)에 #active 클래스 추가
+  //   // console.log("클래스 추가 완료");
+  // } else {
+  //   target.classList.remove("active"); // 클래스 제거
+  //   // console.log("클래스 제거 완료");
+  // }
 });
+function scrollToGiveClass(selector, classText = "active") {
+  var window_h = this.outerHeight;
+  var doc = document.documentElement;
+  var scroll_y = doc.scrollTop;
+  var target = document.querySelector(selector); // DOM 객체 생성 (target)
+  var target_y = target.offsetTop;
+  console.log(`스크롤 된 위치: ${scroll_y}, 대상의 위치 ${target_y}, 화면 높이: ${window_h}`);
+  if (scroll_y + window_h / 2 > target_y) {
+    // 화면의 절반만 오면 작동하게끔 window_h를 2로 나눔
+    target.classList.add(classText);
+  } else {
+    target.classList.remove(classText);
+  }
+}
