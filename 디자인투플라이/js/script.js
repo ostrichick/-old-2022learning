@@ -10,7 +10,6 @@ window.onload = function () {
       el: ".pager", // 대상 선정
       //   type: "",
     },
-
     autoplay: {
       //5초에 한번 자동 슬라이드
       delay: 5000,

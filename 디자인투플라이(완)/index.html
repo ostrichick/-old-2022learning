@@ -21,7 +21,7 @@
     <!--플러그인 연결-->
 
     <!--스크립트 작성-->
-    <script src="js/script.js"></script>
+    <!-- <script src="js/script.js"></script> -->
   </head>
   <body>
     <header>
@@ -34,7 +34,7 @@
         <div id="btns">
           <ul>
             <li>
-              <a href="#" class="open_search">
+              <a href="#" class="open_search" onclick="show(this)">
                 <i class="xi-search xi-2x"></i>
                 <span>검색하기</span></a
               >
@@ -131,7 +131,7 @@
           <p>검색을 할땐 엔터를 누르고, 닫으려면 <span>ESC키를 누르거나</span> X를 눌러주세요.</p>
         </form>
       </div>
-      <a class="close_search"><i class="xi-close"></i></a>
+      <a class="close_search" onclick="close(this)"><i class="xi-close"></i></a>
     </section>
     <!--//search-->
 
@@ -444,5 +444,9 @@
       </div>
       <!--//copyright-->
     </footer>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>
