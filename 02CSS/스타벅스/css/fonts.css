@@ -40,10 +40,9 @@ src:url(웹폰트의 주소)
 .nanumbarungothic * {
   font-family: "NanumBarunGothic", sans-serif;
 }
-@font-face {
-  /*나눔바른고딕 */
+/* @font-face {
   font-family: "nbg";
   src: url("../font/NanumBarunGothic.eot");
   src: url("../font/NanumBarunGothic.eot?#iefix") format("embedded-opentype"), url("../font/NanumBarunGothic.woff") format("woff"), url("../font/NanumBarunGothic.ttf") format("truetype");
   src: local(※), url("../font/NanumBarunGothic.woff") format("woff");
-}
+} */

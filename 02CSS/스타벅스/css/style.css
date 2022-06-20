@@ -507,6 +507,9 @@ border-box; 보더 영역까지 포함하여 최종적 크기 조절 (패딩, �
   max-width: 310px;
   width: 27.7%;
   position: absolute;
+  transform: translateX(-800px); /* 애니메이션 */
+  opacity: 0;
+  transition: all 0.6s ease-out;
 }
 #bean .bean_txt {
   z-index: 9;
@@ -516,6 +519,14 @@ border-box; 보더 영역까지 포함하여 최종적 크기 조절 (패딩, �
   max-width: 321px;
   width: 28.7%;
   position: absolute;
+  transform: translateX(-800px); /* 애니메이션 */
+  opacity: 0;
+  transition: all 0.6s ease-out;
+}
+#bean.active .bean_img,
+#bean.active .bean_txt {
+  transform: translateX(0);
+  opacity: 1;
 }
 #bean a {
   color: #1e245c;
