@@ -27,59 +27,56 @@ removeFunction : function(){}
   - 클래스가 제거될 때 함수를 호출함.
 
 */
-;(function($){
-  $.fn.scrollToGiveClass = function(options){
-
+(function ($) {
+  $.fn.scrollToGiveClass = function (options) {
     var defaultOptions = {
-      baseline:'top',
-      class:'scrolled',
-      add:0,
-      limit:'',
-      limitValue:0,
-      addFunction:function(){},
-      removeFunction:function(){}
+      baseline: "top",
+      class: "scrolled",
+      add: 0,
+      limit: "",
+      limitValue: 0,
+      addFunction: function () {},
+      removeFunction: function () {},
     };
 
-    var op = $.extend(defaultOptions,options);
+    var op = $.extend(defaultOptions, options);
 
-    return this.each(function(){
+    return this.each(function () {
       var $win = $(window);
       var $this = $(this);
-      var this_top = $this.offset().top;//영역의 위치  
-      $win.on('load scroll',scrolled);
+      var this_top = $this.offset().top; //영역의 위치
+      $win.on("load scroll", scrolled);
 
-      function scrolled(){
-        var win_top = $win.scrollTop();//스크롤된 위치
-        var win_height = $win.outerHeight();//화면의 높이
+      function scrolled() {
+        var win_top = $win.scrollTop(); //스크롤된 위치
+        var win_height = $win.outerHeight(); //화면의 높이
 
+        if (op.baseline == "bottom") win_top += win_height;
+        if (op.baseline == "middle") win_top += win_height / 2;
+        if (!isNaN(op.baseline)) this_top = op.baseline;
 
-        if(op.baseline=='bottom') win_top += win_height;
-        if(op.baseline=='middle') win_top += win_height/2;
-        if(!isNaN(op.baseline)) this_top = op.baseline;
-
-        if( 1>op.add && op.add>-1 ){
+        if (1 > op.add && op.add > -1) {
           op.add = win_height * op.add;
         }
 
         win_top += op.add;
 
         var limit = true;
-        if(op.limit=='fixed'){
+        if (op.limit == "fixed") {
           limit = win_top < op.limitValue;
         }
-        if(op.limit=='baseline'){
-          limit = win_top < this_top+op.limitValue;
+        if (op.limit == "baseline") {
+          limit = win_top < this_top + op.limitValue;
         }
 
-        if(win_top>this_top && limit){
-          if(!$this.hasClass(op.class)) op.addFunction();
+        if (win_top > this_top && limit) {
+          if (!$this.hasClass(op.class)) op.addFunction();
           $this.addClass(op.class);
-        }else{
-          if($this.hasClass(op.class)) op.removeFunction();
+        } else {
+          if ($this.hasClass(op.class)) op.removeFunction();
           $this.removeClass(op.class);
         }
-      }//end:scrolled
-
-    });//end:each()
-  }//end:scrollClass()
+      } //end:scrolled
+    }); //end:each()
+  }; //end:scrollClass()
 })(jQuery);
