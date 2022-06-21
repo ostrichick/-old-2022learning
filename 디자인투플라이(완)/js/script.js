@@ -9,6 +9,29 @@ window.addEventListener("scroll", function () {
   }
 });
 
+// ! 슬라이더
+const press = new Swiper("#press .inner", {
+  wrapperClass: "slider", // 슬라이드 요소를 감싸는 요소의 클래스
+  slideClass: "item", // 공통으로 작성된 슬라이드 요소들의 클래스
+  slidesPerView: 5,
+  autoplay: {
+    // 자동으로 슬라이드.
+    delay: 3000, //딜레이 3초
+    disableOnInteraction: false, //수동 전환 후에도 다시 자동슬라이드
+  },
+  speed: 800, //슬라이드가 전환되는 시간
+  spaceBetween: 30, // 슬라이드 사이 간격
+  pagination: {
+    // 페이지 버튼 삽입
+    el: ".dot", // 대상 선정
+    //   type: "",
+    bulletActiveClass: "active", //활성화된 영역에 추가되는 클래스 이름
+    clickable: true, //클릭시 해당 페이지 슬라이드 영역으로 이동
+  },
+});
+
+//
+
 // ! 전체메뉴버튼 열고 닫는 스크립트 (인라인 이벤트)
 function menu_show(btn, e) {
   e.preventDefault(); // 태그가 가진 본래의 기능 비활성화
