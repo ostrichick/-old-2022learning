@@ -42,7 +42,7 @@
     <style>
       body {
         color: navy;
-        font-size: 20px;
+        /* font-size: 20px; */
         font-weight: 600;
       }
     </style>
@@ -93,6 +93,89 @@
         obj.style.color = fontColor;
         //5. 요소에 배경 색상을 입힌다
         obj.style.background = backColor;
+      }
+    </script>
+    <hr />
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <script>
+      // tagName으로 요소를 찾을 때에는 일치하는 태스 요소가 한개이더라도 무조건 배열로 변환
+      //원하는 요소에 인덱스를 사용하여 접근
+      let pTags = document.getElementsByTagName("p");
+      let p2 = pTags[1];
+      console.log(p2);
+      console.log(p2.innerHTML);
+
+      //tagName으로 찾은 모든 요소에 하나씩 접근할 때는 for문을 사용해 인덱스에 하나씩 접근
+      for (i = 0; i < pTags.length; i++) {
+        pTags[i].style.background = "red";
+      }
+    </script>
+    <hr />
+    <div class="ddd">1</div>
+    <div class="dtdt">2</div>
+    <div class="ddd">3</div>
+    <script>
+      let findClass = document.getElementsByClassName("ddd");
+      console.log(findClass[1]);
+      console.log(findClass[1].innerHTML);
+
+      for ([t] in findClass) {
+        // findClass[t].style.background = "yellow";
+      }
+
+      document.write("<h3>document.write()를 이용한 태그 추가</h3>");
+      document.write("<h3>document.write()를 이용한 태그 추가</h3>");
+      document.writeln("writeln()은 공백이있음");
+      document.writeln("writeln()은 공백이있음");
+    </script>
+    <hr />
+    <button onclick="clickFn()">클릭해봐</button>
+    <script>
+      function clickFn() {
+        // 화면이 로드 된 후에 동작하면 기존 HTML을 완전히 지워버린다
+        document.write("html 새로 쓰기");
+        document.write("html 새로 쓰기");
+        document.write("html 새로 쓰기");
+      }
+    </script>
+    <hr />
+    <button onclick="openPop()">팝업 열기</button>
+    <textarea name="" id="textArea" cols="30" rows="10"></textarea>
+    <script>
+      let win = null;
+
+      function openPop() {
+        //팝업 역할을 할 새로운 창 생성
+        if (win == null || win.closed) {
+          win = window.open("", "outwin", "width=300,height=200");
+        }
+        var text = document.getElementById("textArea").value;
+        //팝업이 될 윈도우 창에 웹문서 쓸 준비
+        win.document.open();
+        //해당 창에 웹문서 쓰기
+        win.document.write(text);
+        //웹문서 닫기
+        win.document.close();
+      }
+    </script>
+    <hr />
+    <div id="parent"></div>
+    <button onclick="appP()"><p>p태그 추가</p></button>
+    <script>
+      var cnt = 1;
+      function appP() {
+        var p = document.createElement("p");
+
+        p.innerHTML = "추가된 html p 태 ㅐ그" + cnt;
+        cnt++;
+        p.onclick = function () {
+          var parent = this.parentElement;
+          parent.removeChild(this);
+        };
+
+        document.getElementById("parent").appendChild(p);
       }
     </script>
   </body>
