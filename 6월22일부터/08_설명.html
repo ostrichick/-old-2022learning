@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="" />
+    <style></style>
+  </head>
+  <body>
+    <div id="div01"><h3>안녕하세오, 반가워요</h3></div>
+    <script>
+      let div01 = document.getElementById("div01");
+      console.log(div01.id);
+      console.log(div01.tagName);
+      console.log(div01.innerHTML);
+      // div01.innerHTML = "<h4>시러요 너무 배불러</h4>";
+      div01.textContent = "<strong><br>이이잉</strong>";
+      //태그 적용 안시키는 법
+
+      div01.addEventListener("click", function (e) {
+        alert("악!");
+      });
+      // let clickFn = div01.click(); // 클릭했을 때 적용되어 있는 함수를 얻어오는 메소드
+    </script>
+    <button onclick="changeBox()">클릭!</button>
+    <hr />
+    <div id="box"></div>
+    <script>
+      function changeBox() {
+        let box = document.querySelector("#box");
+        box.style.width = "150px";
+        box.style.height = "100px";
+        box.style.background = "brown";
+        box.style.border = "3px dotted blue";
+      }
+    </script>
+    <hr />
+    <input type="checkbox" id="check01" onclick="turn(this)" /><span>01</span> <input type="checkbox" id="check02" onclick="turn(this)" /><span>02</span>
+    <!--  onclick="turn(check01)", onclick="turn(check02)" 로 인자를 넣을 수도 있음 -->
+    <style>
+      body {
+        color: navy;
+        font-size: 20px;
+        font-weight: 600;
+      }
+    </style>
+    <script>
+      function turn(obj) {
+        if (obj.checked) {
+          obj.nextElementSibling.style.color = "red";
+        } else {
+          obj.nextElementSibling.style.color = "";
+        }
+      }
+      // function turnBack(obj) {
+      //   obj.nextElementSibling.style.color = "black";
+      // }
+    </script>
+    <input type="checkbox" id="check03" onclick="isCheckFn('check03')" /><span>03</span> <input type="checkbox" id="check04" onclick="isCheckFn('check04')" /><span>04</span>
+    <script>
+      function isCheckFn(tagId) {
+        var checkBox = document.getElementById(tagId);
+        if (checkBox.checked) {
+          checkBox.nextElementSibling.style.color = "red";
+        } else {
+          checkBox.nextElementSibling.style.color = "";
+        }
+      }
+    </script>
+    <hr />
+    <div>
+      <ins onclick="changeColor(this,'yellow','blue')">여기</ins>를 클릭하면 '여기' 폰트 색상이 노란색, 배경이 파란색으로<br />
+      <ins onclick="changeColor(this,'red','yellow')">여기</ins>를 클릭하면 '여기' 폰트 색상이 빨간색, 배경이 노란색으로<br />
+    </div>
+    <script>
+      // function change(obj) {
+      //   if (this == document.querySelectorAll("ins")[0]) {
+      //     obj.style.color = "yellow";
+      //     obj.style.background = "blue";
+      //   } else {
+      //     obj.style.color = "red";
+      //     obj.style.background = "yellow";
+      //   }
+      // }
+      //1. '여기'에 온클릭 이벤트 지정
+      //2. 클릭한 요소를 함수로 넘기기 (인자 포함)
+      //3. 요소에 적용할 css 속성값 함수로
+
+      function changeColor(obj, fontColor, backColor) {
+        //4. 요소에 글자 색상을 입힌다
+        obj.style.color = fontColor;
+        //5. 요소에 배경 색상을 입힌다
+        obj.style.background = backColor;
+      }
+    </script>
+  </body>
+</html>
