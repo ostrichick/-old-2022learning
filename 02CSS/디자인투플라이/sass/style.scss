@@ -1,0 +1,266 @@
+html {
+  font-size: 12px;
+}
+body {
+  line-height: 1.6;
+  // 1.6 : 각 영역에 적용된 글자 크기에 비례하여 1.6배
+  // 1.6em : body의 글자 크기(12px)에 비례해 1.6배
+  background: #333;
+}
+h1 {
+  font-size: 20px;
+}
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  /*
+속성값 inherit
+부모 영역의 값을 그대로 상속함
+대부분 텍스트 관련 스타일에서 기본값
+*/
+}
+img {
+  vertical-align: top;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+header {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  padding: 20px 0;
+  color: #fff;
+  .inner {
+    padding: 0 100px;
+  }
+  a:hover {
+    color: #20bec6;
+  }
+  #logo {
+    margin: 18px 50px 0 15px;
+    float: left;
+    a {
+      width: 100px;
+      height: 28px;
+      text-indent: -999px;
+      overflow: hidden;
+      background: url("../images/logo.png") no-repeat;
+      background-size: 100% auto;
+      transition: all 0.2s ease-in-out;
+    }
+    a:hover {
+      background-position: 0 bottom;
+    }
+  }
+  // !end logo
+  #gnb {
+    ul:hover .sub {
+      // li:hover로 작성하면 한번에 하나의 sub만 나타남. ul:hover로 작성하면 전체 sub가 한번에
+      display: block;
+    }
+    li {
+      float: left;
+      margin-top: 8px;
+      // .sub a {
+      //   font-size: 10px;
+      //   line-height: 10px;
+      //   height: 20px;
+      //   font-weight: normal;
+      // }
+      .sub {
+        display: none;
+        padding-bottom: 20px;
+        li {
+          float: none;
+          margin: 0 0 0 15px;
+          a {
+            font-weight: normal;
+            padding: 0;
+            font-size: 10px;
+            white-space: nowrap; /*자동 줄바꿈 X*/
+            // width: 80px;
+          }
+          a::after {
+            display: none;
+          }
+          a:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    a {
+      font-weight: bold;
+      width: 70px;
+      padding: 15px;
+    }
+    a::after {
+      content: "";
+      display: block;
+      background: #fff;
+      width: 0;
+      // width: 100%;
+      height: 2px;
+      transition: all 0.2s ease-in-out;
+    }
+    a:hover::after {
+      width: 100%;
+    }
+  }
+  //! end #gnb
+  .sns {
+    float: right;
+    li {
+      float: left;
+    }
+    a {
+      padding: 15px 5px;
+    }
+  }
+  // !end sns
+}
+// !end header
+
+#main_view {
+  // position: relative;
+  // z-index: -1;
+  background: #000;
+  .slider {
+    height: 100vh;
+    article {
+      width: 100%;
+      height: 100vh;
+      background: center/cover no-repeat;
+      position: relative;
+    }
+    article::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      opacity: 0.5;
+    }
+    .view1 {
+      background-image: url("../images/view01.jpg");
+    }
+    .view2 {
+      background-image: url("../images/view02.jpg");
+    }
+    .view3 {
+      background-image: url("../images/view03.jpg");
+    }
+    .view4 {
+      background-image: url("../images/view04.jpg");
+    }
+    .view5 {
+      background-image: url("../images/view05.jpg");
+    }
+    .view6 {
+      background-image: url("../images/view06.jpg");
+    }
+    .text {
+      position: absolute;
+      bottom: 120px;
+      left: 120px;
+      color: #fff;
+      transform: translateY(50px);
+      opacity: 0;
+      transition: all 0.5s ease-in-out;
+      font-family: "NanumBarunGothicUltraLight", "Montserrat", sans-serif;
+      h3 {
+        font-size: 50px;
+        line-height: 1.1;
+      }
+      p {
+        font-size: 18px;
+        padding: 20px 0;
+        margin-bottom: 10px;
+      }
+      a {
+        width: 150px;
+        height: 50px;
+        line-height: 48px;
+        text-align: center;
+        font-size: 14px;
+        border: 1px solid #fff;
+      }
+      a:hover {
+        background: #fff;
+        color: #000;
+      }
+      i {
+        padding-left: 6px;
+      }
+    }
+    //! text end
+    .swiper-slide-active .text {
+      transform: translateY(0);
+      opacity: 1;
+      transition-delay: 0.6s;
+    }
+  }
+  //!end slider
+  .pager {
+    position: absolute;
+    bottom: 10px;
+    // left: 50%;
+    transform: tsanslateX(-50%);
+    z-index: 10;
+    text-align: center;
+    span {
+      display: inline-block;
+      // float: left;
+      width: 6px;
+      height: 6px;
+      margin: 0 5px;
+      border-radius: 50%;
+      border: 1px white solid;
+      cursor: pointer;
+      background: none;
+      opacity: 0.8;
+    }
+    span.swiper-pagination-bullet-active {
+      background: white;
+    }
+    // !end pager
+  }
+}
+// !end main_view
+
+#works {
+  padding-bottom: 100px;
+  border-bottom: 1px solid #333;
+  h3 {
+    margin: 50px 120px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  h3 a:hover {
+    text-decoration: underline;
+  }
+  .list {
+    li {
+      background: #000;
+      border: 1px solid #fff;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    li::before {
+      content: "";
+      display: block;
+      padding-bottom: 56%;
+      background: center/cover no-repeat;
+      opacity: 0.5;
+    }
+    li:nth-child(1)::before {
+      background-image: url("../images/works/work01.jpg");
+    }
+  }
+}
