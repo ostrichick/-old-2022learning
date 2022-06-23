@@ -23,12 +23,19 @@
       for (i = 0; i < greener.length; i++) {
         greener[i].style.color = "green";
       }
+      // for (let key in greener) {
+      //   console.log(greener[key]);
+      //   greener[key].style.fontWeight = 400;
+      // }
     </script>
     <script>
-      document.querySelector("ol[type=A]").setAttribute("onclick", "turn(this)");
-      function turn(obj) {
-        obj.style.backgroundColor = "yellowgreen";
-      }
+      // document.querySelector("ol[type=A]").setAttribute("onclick", "turn(this)");
+      // function turn(obj) {
+      //   obj.style.backgroundColor = "yellowgreen";
+      // }
+      document.querySelector("ol[type=A]").onclick = function turn() {
+        this.style.backgroundColor = "yellowgreen";
+      };
     </script>
     <hr />
     <h3>
@@ -50,7 +57,7 @@
       buttons[1].setAttribute("onclick", "printP()");
       let pnum = document.querySelectorAll("p");
       function printP() {
-        alert(`<p>태그의 개수는 ${pnum.length}`);
+        alert(`<p>태그의 개수는 ${pnum.length}개요`);
       }
     </script>
     <hr />
