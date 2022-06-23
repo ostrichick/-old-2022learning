@@ -81,5 +81,12 @@
         cnt2++;
       };
     </script>
+    <hr />
+    <div onwheel="wheelFn(event,this)" style="height: 150px; border: 1px solid grey"></div>
+    <script>
+      function wheelFn(e, obj) {
+        obj.innerHTML += e.wheelDelta;
+      }
+    </script>
   </body>
 </html>

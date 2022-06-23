@@ -63,7 +63,7 @@
       document.documentElement.addEventListener("keydown", function (e) {
         var keyName = e.key;
         console.log(`현재 눌린 키 이름 : ${keyName}`);
-        if ((keyName = "Escape")) {
+        if (keyName == "Enter") {
           document.querySelector("#result").value = eval(document.querySelector("#input").value);
         }
       });
@@ -71,17 +71,16 @@
     <hr />
     <h3>이미지 커서 만들기</h3>
     <hr />
+    <div style="height: 50px"></div>
     <div id="cursor" style="position: absolute" width="30"><img src="gary.webp" width="30" alt="" /></div>
     <script>
       let cursor = document.querySelector("#cursor");
       // document.body.addEventListener("onmousemove", function where(event) {
-      let right300 = 300;
 
       function where(e) {
         console.log(e.clientX + "px" + e.clientY + "px");
-        cursor.style.right = right300 + "px";
-        cursor.style.left = '"' + e.clientX + 'px"';
-        cursor.style.top = '"' + e.clientY + "px";
+        cursor.style.left = e.clientX - 10 + "px";
+        cursor.style.top = e.clientY - 10 + "px";
       }
     </script>
     <style>
@@ -103,6 +102,8 @@
         obj.style.background = "rgb(" + randomR + "," + randomG + "," + randomB + ")";
       }
     </script>
+    <hr />
+
     <!--  -->
   </body>
 </html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습 06~</title>
+    <link rel="stylesheet" href="" />
+    <style>
+      h3,
+      hr {
+        margin: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>마우스휠을 사용한 이미지 확대 축소</h3>
+    <hr />
+    <img id="kitty" src="kitty.jpg" width="100" onwheel="wheelFn(event,this)" />
+    <script>
+      let imgSize = 100;
+      function wheelFn(e, obj) {
+        if (e.wheelDelta < 0) {
+          imgSize *= 0.95;
+          obj.style.width = imgSize + "px";
+          if (imgSize < 100) imgSize = 100;
+        } else {
+          imgSize *= 1.05;
+          obj.style.width = imgSize + "px";
+        }
+        console.log(imgSize);
+      }
+    </script>
+    <hr />
+    <h3>span 태그에만</h3>
+    <p>span 태그에만 <span>마우스</span>가 올라올 때 (onmouseover) 밑줄이 그어지고 <span>마우스</span>가 내려갈 때 (onmouseout) 밑줄이 사라지도록 <span>자바스크립트 코드</span>를 작성해요</p>
+    <script>
+      let allSpan = document.querySelectorAll("span");
+      // for (i = 0; i < allSpan.length; i++) {
+      //   allSpan[i].addEventListener();
+      // }
+
+      window.onmouseover = function (e) {
+        // 이곳에 코드 작성
+        if (e.target.tagName == "SPAN") {
+          e.target.style.textDecoration = "underline";
+        }
+      };
+      window.onmouseout = function (e) {
+        // 이곳에 코드 작성
+        if (e.target.tagName == "SPAN") {
+          e.target.style.textDecoration = "";
+        }
+      };
+    </script>
+    <hr />
+    <h3>아이템을 클릭하면 1.3배크기</h3>
+    <hr />
+    <p>여름 방학때 하고 싶은 것들</p>
+    <ul>
+      <li>태평양 요트 일주</li>
+      <li>로켓 타고 화성 탐사</li>
+      <li>전동휠체어 타기</li>
+      <li>계단 거꾸로 내려가기</li>
+    </ul>
+
+    <script>
+      let tagLi = document.querySelectorAll("li");
+      for (i = 0; i < tagLi.length; i++) {
+        console.log(tagLi[i].innerHTML);
+        // tagLi[i].addEventListener("click", function () {
+        //   this.style.fontWeight = "1.3em";
+        //   console.log(i);
+        // });
+
+        tagLi[i].setAttribute("onclick", "larger(this)");
+        function larger(obj) {
+          for (i = 0; i < tagLi.length; i++) {
+            tagLi[i].style.fontSize = "";
+          }
+          obj.style.fontSize = "1.3em";
+          console.log(i);
+        }
+      }
+    </script>
+    <style>
+      li {
+        transition: all 0.5s;
+      }
+    </style>
+    <hr />
+    <h3>아이템에 마우스를 올리면 설명</h3>
+    <hr />
+    <ul>
+      <li onmouseover="over(this, 0)" onmouseout="out(this,0)">
+        태평양 요트 일주
+        <div id="div01">요트를 타고 태평양 전체를 돈다</div>
+      </li>
+      <li>
+        로켓 타고 화성 탐사
+        <div>로켓을 타고 화성으로 간다</div>
+      </li>
+      <li>
+        전동휠체어 타기
+        <div>전동휠체어를 얻어서 탄다</div>
+      </li>
+      <li>
+        계단 거꾸로 내려가기
+        <div>계단을 앞으로 내려가지 않고 뒤로보고 내려간다</div>
+      </li>
+    </ul>
+    <style>
+      ul div {
+        display: none;
+        position: absolute;
+      }
+    </style>
+    <script>
+      function over(obj, index) {
+        document.querySelectorAll("div")[index].style.display = "inline-block";
+      }
+      function out(obj, index) {
+        document.querySelectorAll("div")[index].style.display = "none";
+      }
+    </script>
+  </body>
+</html>
