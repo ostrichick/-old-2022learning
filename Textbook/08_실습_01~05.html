@@ -76,20 +76,32 @@
     </ul>
     <script>
       state_show = false;
-      let span = document.querySelectorAll(".hide");
+      let spans = document.querySelectorAll(".hide");
+      // function toggle() {
+      //   if (state_show) {
+      //     for (i = 0; i < spans.length; i++) {
+      //       spans[i].style.visibility = "hidden";
+      //     }
+      //     state_show = false;
+      //   } else {
+      //     for (i = 0; i < spans.length; i++) {
+      //       spans[i].style.visibility = "visible";
+      //     }
+      //     state_show = true;
+      //   }
+      // }
       function toggle() {
-        if (state_show) {
-          for (i = 0; i < span.length; i++) {
-            span[i].style.visibility = "hidden";
+        for (var i = 0; i < spans.length; i++) {
+          var value = spans[i].style.visibility;
+          if (value != "visible") {
+            spans[i].style.visibility = "visible";
+          } else {
+            spans[i].style.visibility = "hidden";
           }
-          state_show = false;
-        } else {
-          for (i = 0; i < span.length; i++) {
-            span[i].style.visibility = "visible";
-          }
-          state_show = true;
         }
-      }
+      } // DOM의 인라인 STYLE 프로퍼티를 가져오거나 변경함
+      // CSS로 적용한 스타일은 제어할 수 없음
+      // CSS에서 값 가져오려면 getComputedStyle() 메소드를 사용해야함
     </script>
     <hr />
     <h3>계산해봅시다</h3>
