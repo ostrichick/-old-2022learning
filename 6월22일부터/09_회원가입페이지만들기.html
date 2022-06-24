@@ -7,6 +7,8 @@
     <title>회원가입페이지</title>
     <link rel="stylesheet" href="" />
     <style>
+      /* // */
+      /* ! */
       * {
         margin: 0;
         padding: 0;
@@ -18,14 +20,21 @@
       }
       fieldset {
         padding: 10px;
+        border-radius: 10px;
       }
       input {
         width: 100px;
         height: 25px;
         margin: 5px;
+        border-radius: 5px;
+        border: 1px solid grey;
+      }
+      input::placeholder {
+        text-indent: 10px;
       }
       p {
         margin: 3px;
+        text-indent: 5px;
       }
       select {
         width: 100px;
@@ -42,8 +51,8 @@
         width: 320px;
       }
       input[type="submit"] {
-        width: 330px;
-        height: 35px;
+        width: 325px;
+        height: 30px;
       }
       input[type="radio"] {
         height: 15px;
@@ -63,13 +72,13 @@
       <fieldset>
         <h3><strong>J</strong>oin</h3>
         <p>아이디</p>
-        <input id="ex" onblur="checkInput(this)" type="text" name="idcode" placeholder="아이디" /><input type="button" value="중복확인" /><span></span>
+        <input id="ex" onblur="checkInput(this)" type="text" name="idcode" placeholder="아이디를 입력하세요." /><input type="button" value="중복확인" /><span></span>
         <p>비밀번호</p>
-        <input onblur="pwCheck(this)" type="password" name="pw" placeholder="비밀번호" /><span></span>
+        <input onblur="pwCheck(this)" type="password" name="pw" placeholder="비밀번호를 입력하세요." /><span></span>
         <p>비밀번호 확인</p>
-        <input onblur="pwCheck(this)" type="password" name="pwcheck" placeholder="비밀번호확인" /><span></span>
+        <input onblur="pwCheck(this)" type="password" name="pwcheck" placeholder="비밀번호를 다시 입력해주세요." /><span></span>
         <p>이름</p>
-        <input onblur="checkInput(this)" type="text" name="rname" placeholder="이름" /><span></span>
+        <input onblur="checkInput(this)" type="text" name="rname" placeholder="이름을 입력하세요." /><span></span>
         <p>생년월일</p>
         <input onkeyup="this.value = this.value.replaceAll(/[^0-9]/g,'')" maxlength="4" type="text" name="year" placeholder="년도" /><select name="month" id="">
           <option value="1">1월</option>
@@ -88,7 +97,7 @@
         <p>성별</p>
         <input type="radio" name="gender" />남자 <input type="radio" name="gender" />여자
         <p>이메일</p>
-        <input onblur="checkInput(this)" type="email" name="email" placeholder="이메일" /><span></span>
+        <input onblur="checkInput(this)" type="email" name="email" placeholder="이메일을 입력하세요." /><span></span>
         <p>연락처</p>
         <select name="number01" id="">
           <option value="">010</option>
@@ -104,15 +113,15 @@
         <input type="submit" value="로그인" />
       </fieldset>
     </form>
-    <!-- 
-    1.아이디 비번 비번확인 이름 이메일 필수
-    포커스를 잃었을때 비워져있으면 *필수 빨간색으로 출력
+    <!-- ?    1.아이디 비번 비번확인 이름 이메일 필수
+    ? 포커스를 잃었을때 비워져있으면 *필수 빨간색으로 출력
     2. 비밀번호와 확인 값 일치해야함
     포커스를 잃었을때 불일치하면 *비밀번호 불일치 출ㄹ력
     3. 로그인버튼 누르면 데이터 전송. 유효성 검증해서 1,2 충족 못하면 전송안함
 -->
     <script>
       // 숫자여야만 하는것 = 년도, 일, 연락처
+      // ?
       let passwordDone = false;
       function checkInput(obj) {
         if (obj.value == "" && obj.name == "idcode") {
