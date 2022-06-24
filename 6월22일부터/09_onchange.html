@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>onchange</title>
+    <link rel="stylesheet" href="" />
+    <style></style>
+  </head>
+  <body>
+    <h3>onchange 이벤트 예제</h3>
+    <hr />
+    onchange는 입력 양식의 상태가 변했을 때 호출되는 이벤트<br />
+    <input type="checkbox" onchange="console.log('변경')" />
+    <!-- 체크박스의 onchange는 사실상 onclick과 동일 --><br />
+    <input type="text" onchange="console.log('변경')" /><br />
+    <textarea name="dd" id="" cols="30" rows="10" onchange="console.log('변경')"></textarea><br />
+
+    <script></script>
+  </body>
+</html>

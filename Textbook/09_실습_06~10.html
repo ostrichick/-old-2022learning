@@ -14,24 +14,6 @@
     </style>
   </head>
   <body>
-    <h3>마우스휠을 사용한 이미지 확대 축소</h3>
-    <hr />
-    <img id="kitty" src="kitty.jpg" width="100" onwheel="wheelFn(event,this)" />
-    <script>
-      let imgSize = 100;
-      function wheelFn(e, obj) {
-        if (e.wheelDelta < 0) {
-          imgSize *= 0.95;
-          obj.style.width = imgSize + "px";
-          if (imgSize < 100) imgSize = 100;
-        } else {
-          imgSize *= 1.05;
-          obj.style.width = imgSize + "px";
-        }
-        console.log(imgSize);
-      }
-    </script>
-    <hr />
     <h3>span 태그에만</h3>
     <p>span 태그에만 <span>마우스</span>가 올라올 때 (onmouseover) 밑줄이 그어지고 <span>마우스</span>가 내려갈 때 (onmouseout) 밑줄이 사라지도록 <span>자바스크립트 코드</span>를 작성해요</p>
     <script>
@@ -53,6 +35,7 @@
         }
       };
     </script>
+
     <hr />
     <h3>아이템을 클릭하면 1.3배크기</h3>
     <hr />
