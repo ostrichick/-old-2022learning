@@ -92,20 +92,20 @@
     <h3>아이템에 마우스를 올리면 설명</h3>
     <hr />
     <ul>
-      <li onmouseover="over(this, 0)" onmouseout="out(this,0)">
+      <li onmouseover="over(this, 0)" onmouseout="out(this,0)" onmousemove="move(event,this,0)">
         태평양 요트 일주
         <div id="div01">요트를 타고 태평양 전체를 돈다</div>
       </li>
-      <li>
+      <li onmouseover="over(this, 1)" onmouseout="out(this,1)" onmousemove="move(event,this,1)">
         로켓 타고 화성 탐사
         <div>로켓을 타고 화성으로 간다</div>
       </li>
-      <li>
+      <li onmouseover="over(this, 2)" onmouseout="out(this,2)" onmousemove="move(event,this,2)">
         전동휠체어 타기
         <div>전동휠체어를 얻어서 탄다</div>
       </li>
-      <li>
-        계단 거꾸로 내려가기
+      <li onmouseover="over(this, 3)" onmouseout="out(this,3)" onmousemove="move(event,this,3)">
+        계단 거꾸로 내려가기.
         <div>계단을 앞으로 내려가지 않고 뒤로보고 내려간다</div>
       </li>
     </ul>
@@ -113,14 +113,24 @@
       ul div {
         display: none;
         position: absolute;
+        background: aliceblue;
+        border: 3px dotted green;
       }
     </style>
     <script>
+      let allDiv = document.querySelectorAll("div");
       function over(obj, index) {
-        document.querySelectorAll("div")[index].style.display = "inline-block";
+        allDiv[index].style.display = "inline-block";
       }
       function out(obj, index) {
-        document.querySelectorAll("div")[index].style.display = "none";
+        allDiv[index].style.display = "none";
+      }
+      function move(e, obj, index) {
+        function move(e) {
+          console.log(e.clientX + "px" + e.clientY + "px");
+          allDiv[index].style.left = e.clientX - 10 + "px";
+          allDiv[index].style.top = e.clientY - 10 + "px";
+        }
       }
     </script>
   </body>
