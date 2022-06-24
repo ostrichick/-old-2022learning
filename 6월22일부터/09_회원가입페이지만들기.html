@@ -29,7 +29,7 @@
       }
       select {
         width: 100px;
-        height: 29px;
+        height: 30px;
         margin: 5px;
       }
       h3 {
@@ -43,6 +43,7 @@
       }
       input[type="submit"] {
         width: 330px;
+        height: 35px;
       }
       input[type="radio"] {
         height: 15px;
@@ -112,6 +113,7 @@
 -->
     <script>
       // 숫자여야만 하는것 = 년도, 일, 연락처
+      var passwordDone = false;
       function checkInput(obj) {
         if (obj.value == "" && obj.name == "idcode") {
           obj.nextElementSibling.nextElementSibling.innerHTML = "*필수";
@@ -127,23 +129,20 @@
           obj.nextElementSibling.innerHTML = "*필수";
         } else if (document.join.pw.value != document.join.pwcheck.value && document.join.pw.value != "" && document.join.pwcheck.value != "") {
           obj.nextElementSibling.innerHTML = "*비밀번호 불일치";
+          passwordDone = false;
         } else {
           document.join.pw.nextElementSibling.innerHTML = "";
           document.join.pwcheck.nextElementSibling.innerHTML = "";
+          passwordDone = ture;
         }
       }
       function validation() {
-        // 전송 버튼을 눌렀을 때 입력 값이 유효한지에 대한 체크를 하는 함수
-        // 모든 값이 유효해야만 데이터가 전송되게 한다
-        var t1 = document.frm.t1.value;
-        if (t1 == "") {
-          //전송 불가
-          alert("T1은 필수 입력 값입니다");
-          document.frm.t1.focus();
-        } else {
-          //전송
+        if (passwordDone == false) {
+          alert("비밀번호 일치여부를 다시 확인해주세요");
+          document.join.pw.focus();
+        } else if (document.join.idcode.value != "" && document.join.pw.value != "" && document.join.pwcheck.value != "" && document.join.rname.value != "" && document.join.email.value != "") {
           document.frm.submit();
-        }
+        } else alert("필수 양식을 꼭 채우세요.");
       }
     </script>
   </body>
