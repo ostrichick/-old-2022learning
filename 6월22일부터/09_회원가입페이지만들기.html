@@ -65,9 +65,9 @@
         <p>아이디</p>
         <input id="ex" onblur="checkInput(this)" type="text" name="idcode" placeholder="아이디" /><input type="button" value="중복확인" /><span></span>
         <p>비밀번호</p>
-        <input onblur="samepw(this)" type="password" name="pw" placeholder="비밀번호" /><span></span>
+        <input onblur="pwCheck(this)" type="password" name="pw" placeholder="비밀번호" /><span></span>
         <p>비밀번호 확인</p>
-        <input onblur="samepw(this)" type="password" name="pwcheck" placeholder="비밀번호확인" /><span></span>
+        <input onblur="pwCheck(this)" type="password" name="pwcheck" placeholder="비밀번호확인" /><span></span>
         <p>이름</p>
         <input onblur="checkInput(this)" type="text" name="rname" placeholder="이름" /><span></span>
         <p>생년월일</p>
@@ -113,7 +113,7 @@
 -->
     <script>
       // 숫자여야만 하는것 = 년도, 일, 연락처
-      var passwordDone = false;
+      let passwordDone = false;
       function checkInput(obj) {
         if (obj.value == "" && obj.name == "idcode") {
           obj.nextElementSibling.nextElementSibling.innerHTML = "*필수";
@@ -124,16 +124,17 @@
           obj.nextElementSibling.innerHTML = "";
         }
       }
-      function samepw(obj) {
+      function pwCheck(obj) {
         if (obj.value == "") {
           obj.nextElementSibling.innerHTML = "*필수";
         } else if (document.join.pw.value != document.join.pwcheck.value && document.join.pw.value != "" && document.join.pwcheck.value != "") {
-          obj.nextElementSibling.innerHTML = "*비밀번호 불일치";
+          document.join.pw.nextElementSibling.innerHTML = "*비밀번호 불일치";
+          document.join.pwcheck.nextElementSibling.innerHTML = "*비밀번호 불일치";
           passwordDone = false;
         } else {
           document.join.pw.nextElementSibling.innerHTML = "";
           document.join.pwcheck.nextElementSibling.innerHTML = "";
-          passwordDone = ture;
+          passwordDone = true;
         }
       }
       function validation() {
