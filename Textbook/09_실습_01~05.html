@@ -13,7 +13,7 @@
       }
     </style>
   </head>
-  <body onblur="onBl()" onfocus="onFoc()" onmouseover="where(event)" ondblclick="randomColor(this)">
+  <body onblur="onBl()" onfocus="onFoc()" ondblclick="randomColor(this)">
     <h3>포커스와 onblur, onfocus</h3>
     <hr />
     브라우저 바깥에 마우스를 클릭하면 window 객체에 blur, 마우스를 클릭하면 focus
@@ -39,9 +39,9 @@
     <script>
       function loadFruit(value) {
         // let value = value;
-        let radios = document.querySelectorAll("input[type=radio]");
-        for (let i = 0; i < radios.length; i++) {
-          if (radios[i].checked) {
+        let allRadio = document.querySelectorAll("input[type=radio]");
+        for (let i = 0; i < allRadio.length; i++) {
+          if (allRadio[i].checked) {
             document.querySelector("#printFruit").src = "media/9장/media/" + value + ".png";
           }
         }
@@ -60,7 +60,7 @@
     <p>식 <input type="text" id="input" /></p>
     <p>값 <input type="text" id="result" /></p>
     <script>
-      document.documentElement.addEventListener("keydown", function (e) {
+      document.documentElement.addEventListener("keyup", function (e) {
         var keyName = e.key;
         console.log(`현재 눌린 키 이름 : ${keyName}`);
         if (keyName == "Enter") {
@@ -69,27 +69,29 @@
       });
     </script>
     <hr />
-    <h3>이미지 커서 만들기</h3>
-    <hr />
-    <div style="height: 50px"></div>
-    <div id="cursor" style="position: absolute" width="30"><img src="gary.webp" width="30" alt="" /></div>
-    <script>
-      let cursor = document.querySelector("#cursor");
-      // document.body.addEventListener("onmousemove", function where(event) {
+    <div onmouseover="where(event)">
+      <h3>이미지 커서 만들기</h3>
+      <hr />
+      <div style="height: 50px"></div>
+      <div id="cursor" style="position: absolute" width="30"><img src="gary.webp" width="30" alt="" /></div>
+      <script>
+        let cursor = document.querySelector("#cursor");
+        // document.body.addEventListener("onmousemove", function where(event) {
 
-      function where(e) {
-        console.log(e.clientX + "px" + e.clientY + "px");
-        cursor.style.left = e.clientX - 10 + "px";
-        cursor.style.top = e.clientY - 10 + "px";
-      }
-    </script>
-    <style>
-      div#cursor {
-        left: 50px;
-        /* top: 10px; */
-      }
-    </style>
-    <hr />
+        function where(e) {
+          console.log(e.screenX + "px" + e.screenY + "px");
+          cursor.style.left = e.screenX - 10 + "px";
+          cursor.style.top = e.screenY - 10 + "px";
+        }
+      </script>
+      <style>
+        div#cursor {
+          left: 50px;
+          /* top: 10px; */
+        }
+      </style>
+      <hr />
+    </div>
     <h3>브라우저의 아무 곳이나 더블 클릭</h3>
     <hr />
     더블 클릭하면 배경색이 랜덤하게 바뀝니다

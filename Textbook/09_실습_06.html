@@ -94,19 +94,19 @@
     <ul>
       <li onmouseover="over(this, 0)" onmouseout="out(this,0)" onmousemove="move(event,this,0)">
         태평양 요트 일주
-        <div id="div01">요트를 타고 태평양 전체를 돈다</div>
+        <div id="div01">요트를 훔쳐서 태평양 전체를 일주하고 낚시로 끼니를 떼운다</div>
       </li>
       <li onmouseover="over(this, 1)" onmouseout="out(this,1)" onmousemove="move(event,this,1)">
         로켓 타고 화성 탐사
-        <div>로켓을 타고 화성으로 간다</div>
+        <div>우주복을 입고 로켓을 타고 화성으로 가서 생명체가 있는지 확인한다</div>
       </li>
       <li onmouseover="over(this, 2)" onmouseout="out(this,2)" onmousemove="move(event,this,2)">
         전동휠체어 타기
-        <div>전동휠체어를 얻어서 탄다</div>
+        <div>비록 굳이 전동휠체어를 탈 필요는 없더라도 아무튼 어떻게든 얻어서라도 탄다</div>
       </li>
       <li onmouseover="over(this, 3)" onmouseout="out(this,3)" onmousemove="move(event,this,3)">
         계단 거꾸로 내려가기.
-        <div>계단을 앞으로 내려가지 않고 뒤로보고 내려간다</div>
+        <div>계단을 내려갈 때 앞으로 내려가지 않고 뒤로를 보고 엄청 빠르게 내려간다</div>
       </li>
     </ul>
     <style>
@@ -115,6 +115,7 @@
         position: absolute;
         background: aliceblue;
         border: 3px dotted green;
+        width: 100px;
       }
     </style>
     <script>
@@ -126,12 +127,92 @@
         allDiv[index].style.display = "none";
       }
       function move(e, obj, index) {
-        function move(e) {
-          console.log(e.clientX + "px" + e.clientY + "px");
-          allDiv[index].style.left = e.clientX - 10 + "px";
-          allDiv[index].style.top = e.clientY - 10 + "px";
-        }
+        console.log(e.clientX + "px" + e.clientY + "px");
+        allDiv[index].style.left = e.clientX + 5 + "px";
+        allDiv[index].style.top = e.clientY + 5 + "px";
       }
     </script>
+    <hr />
+
+    <h3>계산기 만들기</h3>
+    <hr />
+    <input id="result" type="text" placeholder="0" readonly /><br />
+    <input type="button" value="BACK" onclick="backSpace()" />
+    <input type="button" value="CE" onclick="reset()" />
+    <input type="button" value="C" onclick="reset()" />
+    <input type="button" value="=" onclick="equals()" /><br />
+    <input type="button" value="7" onclick="addInput(value)" />
+    <input type="button" value="8" onclick="addInput(value)" />
+    <input type="button" value="9" onclick="addInput(value)" />
+    <input type="button" value="/" onclick="addInput(value)" /><br />
+    <input type="button" value="4" onclick="addInput(value)" />
+    <input type="button" value="5" onclick="addInput(value)" />
+    <input type="button" value="6" onclick="addInput(value)" />
+    <input type="button" value="*" onclick="addInput(value)" /><br />
+    <input type="button" value="1" onclick="addInput(value)" />
+    <input type="button" value="2" onclick="addInput(value)" />
+    <input type="button" value="3" onclick="addInput(value)" />
+    <input type="button" value="-" onclick="addInput(value)" /><br />
+    <input type="button" value="0" onclick="addInput(value)" />
+    <input type="button" value="+" onclick="addInput(value)" />
+    <input type="button" value="^" onclick="square()" />
+    <input type="button" value="√" onclick="sqrt()" /><br />
+    <script>
+      // 1. 인풋창에 직접 입력 막기
+      // 2. 숫자 버튼을 누를때마다 해당 값을 "문자"로 바꿔서 + 해주고 인풋에 집어넣기
+      // 3. = 버튼 누르면 현재 값을 eval 함수로 계산
+      // 4. 백스페이스 누르면
+      let result = document.querySelector("#result");
+      function equals() {
+        if (result.value != "") result.value = eval(result.value);
+      }
+      function addInput(value) {
+        result.value = result.value + "" + value;
+      }
+      function backSpace() {
+        result.value = result.value.slice(0, -1);
+      }
+      function reset() {
+        result.value = "";
+      }
+      function square() {
+        result.value = result.value + "**";
+      }
+      window.onkeydown = function (e) {
+        if (
+          e.key == 1 ||
+          e.key == 2 ||
+          e.key == 3 ||
+          e.key == 4 ||
+          e.key == 5 ||
+          e.key == 6 ||
+          e.key == 7 ||
+          e.key == 8 ||
+          e.key == 9 ||
+          e.key == 0 ||
+          e.key == "*" ||
+          e.key == "+" ||
+          e.key == "/" ||
+          e.key == "-"
+        ) {
+          result.value = result.value + "" + e.key;
+        }
+        if (e.key == "Backspace") result.value = result.value.slice(0, -1);
+        if (e.key == "Enter") {
+          if (result.value != "") result.value = eval(result.value);
+        }
+        if (e.key == "Escape") result.value = "";
+      };
+    </script>
+    <style>
+      input[type="button"] {
+        width: 60px;
+        margin: 5px 10px;
+      }
+      input[type="text"] {
+        width: 330px;
+        font-size: 20px;
+      }
+    </style>
   </body>
 </html>
