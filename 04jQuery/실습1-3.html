@@ -13,10 +13,10 @@
         $("table *").removeAttr("style");
       }
       function click1() {
-        $("td:gt(0):lt(2)").css("color", "yellow");
+        $("td:lt(3):gt(0)").css("color", "yellow");
       }
       function click2() {
-        $("td:eq(4),td:eq(5)").css("color", "yellow");
+        $("td:lt(6):gt(3)").css("color", "yellow");
       }
       function click3() {
         $("td:lt(6):nth-child(3n+2)").css("color", "yellow");
