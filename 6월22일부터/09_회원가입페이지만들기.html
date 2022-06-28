@@ -47,7 +47,7 @@
       }
       input[name="pw"],
       input[name="pwcheck"],
-      input[name="rname"],
+      input[name="realName"],
       input[name="email"] {
         width: 320px;
       }
@@ -69,7 +69,7 @@
     </style>
   </head>
   <body>
-    <form name="join" action="09_onchange.html" method="get" onsubmit="validation();return false;">
+    <form name="join" action="url_dissect.html" method="post" onsubmit="validation();return false;">
       <fieldset>
         <h3><strong>J</strong>oin</h3>
         <p>아이디</p>
@@ -79,7 +79,7 @@
         <p>비밀번호 확인</p>
         <input onblur="pwCheck(this)" type="password" name="pwcheck" placeholder="비밀번호를 다시 입력해주세요." /><span></span>
         <p>이름</p>
-        <input onblur="checkInput(this)" type="text" name="rname" placeholder="이름을 입력하세요." /><span></span>
+        <input onblur="checkInput(this)" type="text" name="realName" placeholder="이름을 입력하세요." /><span></span>
         <p>생년월일</p>
         <input onkeyup="this.value = this.value.replaceAll(/[^0-9]/g,'')" maxlength="4" type="text" name="year" placeholder="년도" /><select name="month" id="">
           <option value="1">1월</option>
@@ -96,7 +96,7 @@
           <option value="12">12월</option></select
         ><input onkeyup="this.value = this.value.replaceAll(/[^0-9]/g,'')" maxlength="2" type="text" name="day" placeholder="일" />
         <p>성별</p>
-        <input type="radio" name="gender" />남자 <input type="radio" name="gender" />여자
+        <input type="radio" name="gender" value="male" />남자 <input type="radio" name="gender" value="female" />여자
         <p>이메일</p>
         <input onblur="checkInput(this)" type="email" name="email" placeholder="이메일을 입력하세요." /><span></span>
         <p>연락처</p>
@@ -111,9 +111,58 @@
           type="text"
           name="number03"
         /><br />
-        <input type="submit" value="로그인" />
+        <input type="submit" value="회원가입" />
       </fieldset>
     </form>
+    <script>
+      // ! 복습
+      function checkFn(obj) {
+        if (obj.getAttribute("name") == "id") {
+          if (obj.value == "") {
+            obj.nextElementSibling.nextElementSibling.innerHTML = "*필수";
+            obj.nextElementSibling.nextElementSibling.style.color = "red";
+          } else {
+            obj.nextElementSibling.nextElementSibling.innerHTML = "";
+          }
+        } else if (obj.getAttribute("name") == "pw") {
+          obj.nextElementSibling.innerHTML = "*필수";
+          obj.nextElementSibling.style.color = "red";
+        } else if (obj.getAttribute("name") == "pwcheck") {
+          obj.nextElementSibling.innerHTML = "*필수";
+          obj.nextElementSibling.style.color = "red";
+        } else {
+          var pwVal = document.getElementById("pw").value;
+          if (pwVal == obj.value) {
+            //패스워드 확인
+            obj.nextElementSibling.nextElementSibling.innerHTML = "";
+          } else {
+            obj.nextElementSibling.innerHTML = "*불일치";
+            obj.nextElementSibling.style.color = "red";
+          }
+        }
+      }
+
+      function vali() {
+        var id = document.getElementById("id").value;
+        id = document.frm.id.value;
+        var password = document.getElementById("pw").value;
+        var flag = true;
+        password = document.frm.password.value;
+
+        if (id == "") {
+          document.frm.id.nextElementSibling.nextElementSibling.innerHTML = "*필수";
+          document.frm.id.focus();
+          flag = false;
+        }
+        if (password == "") {
+          document.frm.pw.nextElementSibling.innerHTML = "*필수";
+          document.frm.pw.focus();
+          flag = false;
+        }
+        document.frm.submit();
+      }
+    </script>
+
     <!-- ?    1.아이디 비번 비번확인 이름 이메일 필수
     ? 포커스를 잃었을때 비워져있으면 *필수 빨간색으로 출력
     2. 비밀번호와 확인 값 일치해야함
@@ -127,18 +176,24 @@
       function checkInput(obj) {
         if (obj.value == "" && obj.name == "idcode") {
           obj.nextElementSibling.nextElementSibling.innerHTML = "*필수";
-        }
-        if (obj.value == "") {
+        } else if (obj.value == "") {
           obj.nextElementSibling.innerHTML = "*필수";
         } else {
           obj.nextElementSibling.innerHTML = "";
         }
       }
+      // 비밀번호 일치 확인용 플래그
       let passwordDone = false;
       function pwCheck(obj) {
         if (obj.value == "") {
+          // 공백일 경우 필수 출력
           obj.nextElementSibling.innerHTML = "*필수";
-        } else if (document.join.pw.value != document.join.pwcheck.value && document.join.pw.value != "" && document.join.pwcheck.value != "") {
+        } else if (
+          // 비밀번호가 같지 않다 && 비밀번호가 공백이 아니다 -> 불일치 출력
+          document.join.pw.value != document.join.pwcheck.value &&
+          document.join.pw.value != "" &&
+          document.join.pwcheck.value != ""
+        ) {
           document.join.pw.nextElementSibling.innerHTML = "*비밀번호 불일치";
           document.join.pwcheck.nextElementSibling.innerHTML = "*비밀번호 불일치";
           passwordDone = false;
@@ -149,12 +204,21 @@
         }
       }
       function validation() {
-        if (passwordDone == false) {
+        if (
+          // 다섯개의 필수 항복이 전부 공백이 아닐 경우
+          document.join.idcode.value == "" ||
+          document.join.pw.value == "" ||
+          document.join.pwcheck.value == "" ||
+          document.join.realName.value == "" ||
+          document.join.email.value == ""
+        )
+          alert("필수 양식을 꼭 채우세요.");
+        else if (passwordDone == false) {
           alert("비밀번호 일치여부를 다시 확인해주세요");
           document.join.pw.focus();
-        } else if (document.join.idcode.value != "" && document.join.pw.value != "" && document.join.pwcheck.value != "" && document.join.rname.value != "" && document.join.email.value != "") {
+        } else {
           document.frm.submit();
-        } else alert("필수 양식을 꼭 채우세요.");
+        }
       }
     </script>
   </body>
