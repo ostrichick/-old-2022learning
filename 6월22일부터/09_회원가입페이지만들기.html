@@ -123,7 +123,7 @@
     <script>
       // 숫자여야만 하는것 = 년도, 일, 연락처
       // ?
-      let passwordDone = false;
+
       function checkInput(obj) {
         if (obj.value == "" && obj.name == "idcode") {
           obj.nextElementSibling.nextElementSibling.innerHTML = "*필수";
@@ -134,6 +134,7 @@
           obj.nextElementSibling.innerHTML = "";
         }
       }
+      let passwordDone = false;
       function pwCheck(obj) {
         if (obj.value == "") {
           obj.nextElementSibling.innerHTML = "*필수";
