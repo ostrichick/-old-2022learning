@@ -12,7 +12,6 @@
         //코드 ㅈ가성
         if ($("input[name = title]").val() == "" || $("input[name = content]").val() == "" || $("input[name = owner]").val() == "") {
           alert("값을 모두 입력해주세요.");
-          return;
         } else {
           $("table").append("<tr><td>" + $("input[name = title]").val() + "</td><td>" + $("input[name = content]").val() + "</td><td>" + $("input[name = owner]").val() + "</td></tr>");
           $("input[name = title]").val("");
