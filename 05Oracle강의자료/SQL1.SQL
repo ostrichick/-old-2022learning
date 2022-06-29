@@ -49,5 +49,79 @@ SELECT FIRST_NAME || '의 급여는' || SALARY || '입니다' AS "직원 급여"
 
    /*예제 11 집계함수 sum() avg() max() min()
    employees 테이블에서 부서번호가 100인 직원들의 급여 합계과 평균 급여, 가장 높은 급여를 조회*/
-   SELECT SUM(SALARY), CAST(AVG(SALARY) AS NUMBER (7,2)), MAX(SALARY), MIN(SALARY) FROM EMPLOYEES GROUP BY DEPARTMENT_ID HAVING DEPARTMENT_ID = 100;
+   SELECT SUM(SALARY), CAST(AVG(SALARY) AS NUMBER (7,2)), MAX(SALARY), MIN(SALARY) FROM EMPLOYEES
+   GROUP BY DEPARTMENT_ID HAVING DEPARTMENT_ID = 100;
 
+	/* 예제  12 집계함수 rollup()
+employees 테이블에서 부서별 사원수와 총 사원수를 조회*/
+SELECT DEPARTMENT_ID 부서번호, COUNT(DEPARTMENT_ID) 사원수 FROM EMPLOYEES a
+GROUP BY ROLLUP (DEPARTMENT_ID);
+
+/*예제 13 집계함수 cube()
+EMPLOYEES에서 각 부서별 사원수와 부서의 직업번호별 사원수, 총 사원수를 조회*/
+SELECT DEPARTMENT_ID 부서번호, JOB_ID 직업번호, COUNT(EMPLOYEE_ID) 사원수 FROM EMPLOYEES
+GROUP BY CUBE(DEPARTMENT_ID), JOB_ID
+ORDER BY DEPARTMENT_ID, JOB_ID;
+
+/*예제 14 샘플데이터 생성 - emplyees에서 사번, 이름, 급여를 저장할 수 있는 explyees_sample 테이블 생성, 데이터 입력*/
+   CREATE TABLE EMPLOYEES_sample (
+EMPLOYEE_ID NUMBER(6) NOT NULL PRIMARY KEY,
+first_name VARCHAR(20) NOT NULL,
+salary NUMBER(8,2) NOT NULL
+);
+ALTER TABLE HR.EMPLOYEES_sample ADD
+(
+    CONSTRAINT EMP_sample_SALARY_MIN
+    CHECK ( salary > 0 )
+);
+/*
+INSERT INTO EMPLOYEES_sample(first_name,EMPLOYEE_ID,SALARY) SELECT first_name,EMPLOYEE_ID,SALARY FROM EMPLOYEES;
+*/
+INSERT INTO EMPLOYEES_SAMPLE
+	SELECT EMPLOYEE_ID,FIRST_NAME,SALARY FROM EMPLOYEES ;
+COMMIT;
+--CTAS를 이용해서 employees_sample2 테이블을 생성
+CREATE TABLE EMPLOYEES_sample2 AS (SELECT EMPLOYEE_id, first_name, salary FROM EMPLOYEES );
+
+/*예제 15 데이터 수정 update - employees_sample 테이블에 bonus 컬럼(데이터형:number(7), null)을 추가하고
+이름이 A로 시작하는 직원에게 보너스로 5000씩 지급, 보너스가 지급된 사원의 사번, 이름을 조회*/
+ALTER TABLE EMPLOYEES_sample ADD bonus NUMBER(7);
+UPDATE EMPLOYEES_SAMPLE SET bonus=5000
+WHERE  FIRST_NAME LIKE 'A%';
+SELECT EMPLOYEE_ID, first_name FROM EMPLOYEES_sample
+WHERE  bonus=5000;
+
+--UPDATE EMPLOYEES_SAMPLE SET salary=salary+bonus, bonus=bonus-bonus WHERE first_name='Adam';
+
+/*예제 15 데이터 삭제 delete from
+employees_sample 데이터에서 이름이 A로 시작하는 직원을 삭제, 그 후 총 직원 수 조회*/
+DELETE FROM EMPLOYEES_sample WHERE FIRST_NAME LIKE 'A%';
+SELECT COUNT(*) 총직원수 FROM EMPLOYEES_SAMPLE;
+
+--employees_sample 테이블에서 급여가 10000 초과하는 직원을 삭제하고
+
+DELETE FROM EMPLOYEES_sample WHERE salary>10000;
+SELECT COUNT(*) 총직원수 FROM EMPLOYEES_SAMPLE;
+SELECT * FROM dual;
+
+/*예제 16 문자열 함수
+p252~255 예제*/
+SELECT ASCII('A'),ASCII('a'),ASCII('0'),ASCII('9'), CHR('108'), asciistr('궯'), unistr('\d55b')FROM dual;
+
+--문자열의 길이: 한글, 영어, lengthb(문자열): 문자열에 할당된 byte 수
+SELECT LENGTH('ㅁㄴㅇㄻ'), LENGTH('QWEr'), LENGTHB('ㅁㄴㅇㄻ'),LENGTHB('QWEr') FROM dual;
+
+--대상 문자열에서 해당 문자열에 대한 순서값을 반환, instrb(): byte 단위로 계산하여 반환
+SELECT INSTR('이것이 oracle이다. 이것도 오라클이다', '이것') FROM dual;
+SELECT INSTR('이것이 oracle이다. 이것도 오라클이다', '이것' , 2) FROM dual;
+SELECT INSTRB('이것이 oracle이다. 이것도 오라클이다', '이것' , 2) FROM dual;
+
+--소문자로 대문자로 단어의 첫글자만 변환
+SELECT LOWER('aDfdFGd'), upper('aDfdFGd'), INITCAP('aDfdFGd') FROM dual ;
+
+--문자열 바꾸기 replace translate
+SELECT REPLACE ('우에엥', '에' , '이') FROM dual;
+SELECT TRANSLATE('이것이 오라클이다', '이것','AB') FROM dual;
+
+--순서값에서 부터 지정한 개수만큼 문자열 추출 반환
+SELECT SUBSTR('ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ', 7,5) FROM dual;
