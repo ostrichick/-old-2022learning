@@ -125,3 +125,19 @@ SELECT TRANSLATE('이것이 오라클이다', '이것','AB') FROM dual;
 
 --순서값에서 부터 지정한 개수만큼 문자열 추출 반환
 SELECT SUBSTR('ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ', 7,5) FROM dual;
+
+--문자열 순서 거꾸로 변환
+SELECT REVERSE('1234dㅇ') FROM dual; -- 한글은 안됨?
+
+--지정한 길이 만큼 지정한 문자로 왼쪽이나 오른쪽을 채워서 반환. 길이는 byte 단위
+SELECT LPAD('이것이', 11, '#'), RPAD('이것이', 11, 'ㅇ') FROM dual;
+
+--지정한 문자를 제거하되 중간의 문자는 제거되지 않음, 지정한 문자가 없을시 공백 제거
+SELECT LTRIM('                       이것이        '), RTRIM('$$$ 이것 $ 이 $ 오라클이다$$$$$ $$$$$$$$', '$') FROM dual;
+
+--앞뒤 공백 제거
+SELECT TRIM('            이것이              ') 결과 FROM dual;
+
+-- 대상 문자열에서 지정된 문자 개수를 반환
+SELECT regexp_count('이것이 오라클이다','이') FROM dual;
+
