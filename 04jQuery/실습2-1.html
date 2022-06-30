@@ -16,12 +16,22 @@
         });
       }
     </script>
+    <script>
+      // 복습
+      function check_Btn() {
+        $("input[name=check]:checked").each(function () {
+          // 아니면 이것도 가능 .filter(:checked)...
+          var value = $(this).val();
+          console.log(value + "번");
+        });
+      }
+    </script>
   </head>
   <body>
     <input type="checkbox" name="check" value="1" />1번 <input type="checkbox" name="check" value="2" />2번 <input type="checkbox" name="check" value="3" />3번
     <input type="checkbox" name="check" value="4" />4번
     <br />
-    <input type="button" value="체크 버튼 확인" onclick="checkBtn()" />
+    <input type="button" value="체크 버튼 확인" onclick="check_Btn()" />
     <script></script>
   </body>
 </html>
