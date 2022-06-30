@@ -128,7 +128,7 @@
       <tr>
         <td>세번째 제목</td>
         <td>세번째 작성자</td>
-        <td><button onclick="info(this)">정보 이동</button></td>
+        <td><button <!--onclick="info(this)" -->정보 이동</button></td>
       </tr>
     </table>
     <div id="info"></div>
@@ -138,20 +138,11 @@
       }
     </style>
     <script>
-      $("button").click(function () {
+      $("table button").click(function () {
+        // next() 동생, prev() 형, parent() 부모
+        // children() 자식요소들을 얻어옴
         var title = $(this).parent().prev().prev().text();
-
-        console.log($(this));
-        console.log($(this).parent());
-        console.log($(this).parent().prev());
-        console.log($(this).parent().prev().prev());
-        console.log($(this).parent().prev().prev().html());
-        console.log($(this).parent().prev().prev().text());
-        console.log($(this).parent().prev().prev().val());
-        console.log(title);
-
-        var writer = $(this).parent().prev().html();
-        console.log(writer);
+        var writer = $(this).parent().prev().text();
         $("#info").text(title + "/" + writer);
       });
     </script>
