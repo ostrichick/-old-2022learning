@@ -129,7 +129,7 @@ header .btn_search p {
 }
 /* header end */
 
-header #gnb {
+header #gnb12 {
   /* position: absolute; */
   width: 1100px;
   margin: 0 auto;
@@ -137,28 +137,28 @@ header #gnb {
   padding-top: 54px;
   right: 0;
 }
-header #gnb .main_list {
+header #gnb12 .main_list {
   float: right;
 }
-header #gnb .main_list li {
+header #gnb12 .main_list li {
   float: left;
 }
-header #gnb .main_list li:nth-child(1) {
+header #gnb12 .main_list li:nth-child(1) {
   width: 89px;
 }
-header #gnb .main_list li:nth-child(2) {
+header #gnb12 .main_list li:nth-child(2) {
   width: 73px;
 }
-header #gnb .main_list li:nth-child(3) {
+header #gnb12 .main_list li:nth-child(3) {
   width: 79px;
 }
-header #gnb .main_list li:nth-child(4) {
+header #gnb12 .main_list li:nth-child(4) {
   width: 153px;
 }
-header #gnb .main_list li:nth-child(5) {
+header #gnb12 .main_list li:nth-child(5) {
   width: 225px;
 }
-header #gnb .main_list li:nth-child(6) {
+header #gnb12 .main_list li:nth-child(6) {
   width: 131px;
 }
 .main_list > li > a {
@@ -174,7 +174,7 @@ header #gnb .main_list li:nth-child(6) {
   background: #2c2a29;
   color: #669900;
 }
-#gnb .sub {
+#gnb12 .sub {
   width: 100%;
   height: 0;
   background: #2c2a29;
@@ -184,15 +184,15 @@ header #gnb .main_list li:nth-child(6) {
   transition: all 0.5s;
   overflow: hidden;
 }
-#gnb li:hover .sub {
+#gnb12 li:hover .sub {
   /* display: block; */
   height: 300px;
   z-index: 1;
 }
-#gnb .sub_menu {
+#gnb12 .sub_menu {
   height: 200px;
 }
-#gnb .sub_txbg {
+#gnb12 .sub_txbg {
   height: 100px;
   background: url("../images/gnb_sub_txbg.jpg");
 }

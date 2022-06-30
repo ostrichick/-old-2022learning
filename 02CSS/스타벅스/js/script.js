@@ -6,8 +6,8 @@ window.onload = function () {
   //   p[0].onclick = function () {
   //     this.style.display = "none";
   //   };
-  let open_btn = document.querySelector(".btn_search .open");
-  open_btn.addEventListener("click", function () {
+  let open_Btn = document.querySelector(".btn_search .open");
+  open_Btn.addEventListener("click", function () {
     this.style.display = "none";
     this.parentElement.style.width = "180px";
     // let util = document.querySelector("#util");
@@ -31,10 +31,10 @@ window.onload = function () {
   //   });
 
   // 카피
-  var state_open = false;
-  let prom = document.getElementById("main_prom");
-  var prom_btn = document.querySelector("#notice .right a");
-  var prom_img = document.querySelector("#notice .right img");
+  let state_open = false;
+  const prom = document.getElementById("main_prom");
+  const prom_btn = document.querySelector("#notice .right a");
+  const prom_img = document.querySelector("#notice .right img");
 
   prom_btn.addEventListener("click", function (e) {
     e.preventDefault();
@@ -50,7 +50,7 @@ window.onload = function () {
     }
   });
 };
-//util 왼쪽 232px = 415
+// util 왼쪽 232px = 415
 // ! window.onload = function()
 
 window.addEventListener("scroll", function () {
@@ -74,11 +74,11 @@ window.addEventListener("scroll", function () {
   // }
 });
 function scrollToGiveClass(selector, classText = "active") {
-  var window_h = this.outerHeight;
-  var doc = document.documentElement;
-  var scroll_y = doc.scrollTop;
-  var target = document.querySelector(selector); // DOM 객체 생성 (target)
-  var target_y = target.offsetTop;
+  const window_h = this.outerHeight;
+  const doc = document.documentElement;
+  const scroll_y = doc.scrollTop;
+  const target = document.querySelector(selector); // DOM 객체 생성 (target)
+  const target_y = target.offsetTop;
   console.log(`스크롤 된 위치: ${scroll_y}, 대상의 위치 ${target_y}, 화면 높이: ${window_h}`);
   if (scroll_y + window_h / 2 > target_y) {
     // 화면의 절반만 오면 작동하게끔 window_h를 2로 나눔
