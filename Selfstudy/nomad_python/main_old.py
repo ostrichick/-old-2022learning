@@ -1,3 +1,5 @@
+import requests
+from bs4 import BeautifulSoup
 # import requests
 # from bs4 import BeautifulSoup
 
@@ -6,9 +8,6 @@
 # indeed_soup = BeautifulSoup(indeed_result.txt, "html.parser")
 
 # print(indeed_soup)
-import requests
-from bs4 import BeautifulSoup
-
 indeed_result = requests.get("https://www.coupang.com/np/categories/186764?page=1")
 
 indeed_soup = BeautifulSoup(indeed_result.text,"html.parser")
