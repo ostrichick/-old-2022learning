@@ -69,6 +69,7 @@ INSERT INTO stdclubTBL VALUES (IDSEQ.NEXTVAL, '은지원','축구');
 INSERT INTO stdclubTBL VALUES (IDSEQ.NEXTVAL, '은지원','봉사');
 INSERT INTO stdclubTBL VALUES (IDSEQ.NEXTVAL, '바비킴','봉사');
 
+--실습6-1
 SELECT S.full_name, S.region, C.club_name, c.club_room
  FROM STDTBL s
  	INNER JOIN stdclubTbl SC
@@ -76,6 +77,51 @@ SELECT S.full_name, S.region, C.club_name, c.club_room
  	INNER JOIN clubtbl c
  		ON sc.club_name = c.Club_name
 ORDER BY s.full_name;
+
+--실습6-2
+SELECT c.club_name, c.club_room, s.full_name, s.region
+ FROM stdtbl  s
+   	INNER JOIN stdclubTbl SC
+   	ON s.full_name =sc.full_name
+   	--USING(full_name) --안됨
+   	INNER JOIN clubtbl c
+   	ON sc.club_name = c.club_name
+   	--USING(club_name) --안됨
+   	ORDER BY c.club_name;
+
+--실습7-1
+SELECT S.full_name, S.region, C.club_name, c.club_room
+ FROM STDTBL s
+  left JOIN stdclubTbl SC -- 성시경은 클럽이 없고 학생목록에만 있으므로 s를 가르켜야함
+ 		ON s.FULL_NAME = sc.FULL_NAME
+ 	left JOIN clubtbl c
+ 		ON sc.club_name = c.Club_name
+ORDER BY s.full_name;
+
+--실습7-2
+SELECT c.club_name, c.club_room, s.full_name, s.region
+ FROM stdtbl  s LEFT JOIN stdclubTbl SC
+   	ON s.full_name =sc.full_name
+   	   	   	right JOIN clubtbl c -- 동아리를 기준한 정렬이므로 클럽쪽으로 right
+   	ON sc.club_name = c.club_name
+   	   	ORDER BY c.club_name;
+
+SELECT S.full_name, S.region, C.club_name, c.club_room
+ FROM STDTBL s
+  left JOIN stdclubTbl SC
+ 		ON s.FULL_NAME = sc.FULL_NAME
+ 	left JOIN clubtbl c
+ 		ON sc.club_name = c.Club_name
+union
+SELECT c.club_name, c.club_room, s.full_name, s.region
+ FROM stdtbl  s LEFT JOIN stdclubTbl SC
+   	ON s.full_name =sc.full_name
+   	   	   	right JOIN clubtbl c
+   	ON sc.club_name = c.club_name;
+
+
+
+
 
 /*join : 테이블을 연결하여 결과를 조회할 수 있도록 해주는 것
 inner join : 동등조인, equi 조인, 내부 조인, 가장 많이 사용, 양쪽 테이블에 모두 있는 것에 대한 조회
@@ -102,4 +148,52 @@ SELECT e.employee_id, d.department_name
 SELECT e.employee_id, d.department_name
  FROM departments d right outer JOIN employees e
    ON e.department_id = d.department_id
+   ORDER BY e.employee_id; -- 결과: 107개의 데이터 조회 (178번 사원은 부서 없음)
+
+SELECT e.employee_id, d.department_name
+ FROM employees e  left outer JOIN departments d
+   on e.department_id = d.department_id(+) -- 예전 아우터 조인에는 (+)기호가 있음
    ORDER BY e.employee_id;
+
+   SELECT e.employee_id, d.department_name
+ FROM employees e  left JOIN departments d
+   USING(department_id) -- 두 테이블간의 공통 필드 이름이 같을 때 using 사용 가능
+   ORDER BY e.employee_id;
+
+   /*예제 5 3개의 테이블 inner join
+   employees 테이블의 사번 150 직원의 사번, 이름, 부서명, 근무지의 모든 정보 조회
+   부테이블 departments 근무지 테이블 locations*/
+
+      SELECT e.employee_id, e.first_name, d.department_name, l.*
+      FROM employees e  INNER JOIN departments d
+        USING(department_id)
+       INNER JOIN locations l
+  ON d.location_id = l.location_id
+--    USING(location_id)
+    WHERE e.employee_id = 150;
+
+    /*예제 6 self join employees 테이블에서 직원의 manager_id는 자신의 상급자 employee_id와 동일하다
+    이를 이용해서 각 직원의 사번, 이름, 상급자 사번, 상급자 이름을 조회하라*/
+
+      SELECT e1.employee_id "사 번", e1.first_name "이름" , e2.employee_id "상사 사번", e2.first_name "상사 이름"
+      FROM employees e1, employees e2
+      WHERE e1.manager_id = e2.employee_id;
+
+    /*예제 7 cross join
+    employees 테이블과 countries 테이블을 이용하여 테스트용 데이터를 생성하되 생성된 데이터 계수만 조회*/
+    SELECT COUNT(*) "데이터 개수"  FROM employees cross JOIN countries;
+
+    /*테이블복사 CTAS를 이용해서 employees_test 테이블을 생성*/
+    CREATE TABLE employees_test AS
+    	SELECT * FROM employees cross JOIN countries;
+
+    	 /*예제 8 inner join
+    	 employees 테이블에 job_id 에 CLERk이 들어간 직원의 이름, job_id, 부서이름, 부서위치(street_address)*/
+
+    	  SELECT e.first_name, e.job_id, d.department_name, l.street_address
+    	   FROM employees e
+    	   INNER JOIN departments d
+    	    USING(department_id)
+    	   INNER JOIN locations l
+    	   USING(location_id)
+    	   WHERE e.job_id like '%CLERK%';
